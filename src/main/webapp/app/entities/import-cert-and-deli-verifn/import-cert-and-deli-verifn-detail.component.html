@@ -1,0 +1,126 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="importCertAndDeliVerifn">
+            <h2><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.detail.title">Import Cert And Deli Verifn</span> {{ importCertAndDeliVerifn.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId">External Id</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.externalId }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.companyName">Company Name</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.companyName }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.uniqueEntityNumberUen">Unique Entity Number Uen</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.uniqueEntityNumberUen }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.address">Address</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.nameOfContactPerson">Name Of Contact Person</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.nameOfContactPerson }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.designation">Designation</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.designation }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.contactNo">Contact No</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.contactNo }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.email">Email</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterCompanyName">Exporter Company Name</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.exporterCompanyName }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterAddress">Exporter Address</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.exporterAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.euCompanyName">Eu Company Name</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.euCompanyName }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.country">Country</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.country }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.radio1">Radio 1</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.radio1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</span>
+                </dd>
+            </dl>
+
+            <br>
+
+            <div class="table-responsive" id="entities" *ngIf="importCertAndDeliVerifn.importInformations && importCertAndDeliVerifn.importInformations.length > 0">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                        <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.descriptionOfGoods">Description Of Goods</span></th>
+                        <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.hsCode">Hs Code</span></th>
+                        <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.unit">Unit</span></th>
+                        <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.quantity">Quantity</span></th>
+                        <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.value">Value</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of importCertAndDeliVerifn.importInformations">
+                        <td><a [routerLink]="['/item', item.id, 'view']">{{ item.id }}</a></td>
+                        <td>{{ item.descriptionOfGoods }}</td>
+                        <td>{{ item.hsCode }}</td>
+                        <td>{{ item.unit }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.value }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [disabled]="disableActions()"
+                    [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+
+            <button type="button"
+                    [disabled]="disableActions()"
+                    (click)="approveAction()"
+                    class="btn btn-success">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.approve">Approve</span>
+            </button>
+
+            <button type="button"
+                    [disabled]="disableActions()"
+                    (click)="rejectAction()"
+                    class="btn btn-danger">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.reject">Reject</span>
+            </button>
+        </div>
+    </div>
+</div>

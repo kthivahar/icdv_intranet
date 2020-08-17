@@ -48,6 +48,9 @@ public class CacheConfiguration {
             createCache(cm, sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User.class.getName());
             createCache(cm, sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Authority.class.getName());
             createCache(cm, sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User.class.getName() + ".authorities");
+            createCache(cm, sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn.class.getName());
+            createCache(cm, sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn.class.getName() + ".importInformations");
+            createCache(cm, sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportInformation.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

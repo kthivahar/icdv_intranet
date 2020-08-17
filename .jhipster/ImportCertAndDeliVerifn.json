@@ -1,0 +1,92 @@
+{
+  "name": "ImportCertAndDeliVerifn",
+  "fields": [
+    {
+      "fieldName": "externalId",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "companyName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "uniqueEntityNumberUen",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameOfContactPerson",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exporterCompanyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exporterAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "euCompanyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "radio1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "OPEN,REJECTED,APPROVED,CANCELLED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "importInformation",
+      "otherEntityRelationshipName": "importCertAndDeliVerifn",
+      "relationshipName": "importInformations"
+    }
+  ],
+  "changelogDate": "20200817090754",
+  "entityTableName": "import_cert_and_deli_verifn",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

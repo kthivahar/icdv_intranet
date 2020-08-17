@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="icdvIntranetApp.importInformation.home.title">Import Informations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-import-information" [routerLink]="['/import-information/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="icdvIntranetApp.importInformation.home.createLabel">
+            Create a new Import Information
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="importInformations?.length === 0">
+        <span jhiTranslate="icdvIntranetApp.importInformation.home.notFound">No importInformations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="importInformations && importInformations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.externalId">External Id</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.descriptionOfGoods">Description Of Goods</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.hsCode">Hs Code</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.unit">Unit</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.quantity">Quantity</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.value">Value</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importInformation.importCertAndDeliVerifn">Import Cert And Deli Verifn</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let importInformation of importInformations ;trackBy: trackId">
+                    <td><a [routerLink]="['/import-information', importInformation.id, 'view']">{{ importInformation.id }}</a></td>
+                    <td>{{ importInformation.externalId }}</td>
+                    <td>{{ importInformation.descriptionOfGoods }}</td>
+                    <td>{{ importInformation.hsCode }}</td>
+                    <td>{{ importInformation.unit }}</td>
+                    <td>{{ importInformation.quantity }}</td>
+                    <td>{{ importInformation.value }}</td>
+                    <td>
+                        <div *ngIf="importInformation.importCertAndDeliVerifn">
+                            <a [routerLink]="['/import-cert-and-deli-verifn', importInformation.importCertAndDeliVerifn?.id, 'view']" >{{ importInformation.importCertAndDeliVerifn?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/import-information', importInformation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/import-information', importInformation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(importInformation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

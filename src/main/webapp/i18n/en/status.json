@@ -1,0 +1,11 @@
+{
+  "icdvIntranetApp": {
+    "Status": {
+      "null": "",
+      "OPEN": "OPEN",
+      "REJECTED": "REJECTED",
+      "APPROVED": "APPROVED",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

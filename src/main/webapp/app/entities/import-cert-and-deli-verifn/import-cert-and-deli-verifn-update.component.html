@@ -1,0 +1,136 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-import-cert-and-deli-verifn-heading" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.home.createOrEditLabel">Create or edit a Import Cert And Deli Verifn</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId" for="field_externalId">External Id</label>
+                    <input type="text" class="form-control" name="externalId" id="field_externalId"
+                           formControlName="externalId"/>
+                    <div *ngIf="editForm.get('externalId')!.invalid && (editForm.get('externalId')!.dirty || editForm.get('externalId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('externalId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.companyName" for="field_companyName">Company Name</label>
+                    <input type="text" class="form-control" name="companyName" id="field_companyName"
+                           formControlName="companyName"/>
+                    <div *ngIf="editForm.get('companyName')!.invalid && (editForm.get('companyName')!.dirty || editForm.get('companyName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('companyName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('companyName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.uniqueEntityNumberUen" for="field_uniqueEntityNumberUen">Unique Entity Number Uen</label>
+                    <input type="text" class="form-control" name="uniqueEntityNumberUen" id="field_uniqueEntityNumberUen"
+                           formControlName="uniqueEntityNumberUen"/>
+                    <div *ngIf="editForm.get('uniqueEntityNumberUen')!.invalid && (editForm.get('uniqueEntityNumberUen')!.dirty || editForm.get('uniqueEntityNumberUen')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('uniqueEntityNumberUen')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                           formControlName="address"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.nameOfContactPerson" for="field_nameOfContactPerson">Name Of Contact Person</label>
+                    <input type="text" class="form-control" name="nameOfContactPerson" id="field_nameOfContactPerson"
+                           formControlName="nameOfContactPerson"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.designation" for="field_designation">Designation</label>
+                    <input type="text" class="form-control" name="designation" id="field_designation"
+                           formControlName="designation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.contactNo" for="field_contactNo">Contact No</label>
+                    <input type="text" class="form-control" name="contactNo" id="field_contactNo"
+                           formControlName="contactNo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterCompanyName" for="field_exporterCompanyName">Exporter Company Name</label>
+                    <input type="text" class="form-control" name="exporterCompanyName" id="field_exporterCompanyName"
+                           formControlName="exporterCompanyName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterAddress" for="field_exporterAddress">Exporter Address</label>
+                    <input type="text" class="form-control" name="exporterAddress" id="field_exporterAddress"
+                           formControlName="exporterAddress"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.euCompanyName" for="field_euCompanyName">Eu Company Name</label>
+                    <input type="text" class="form-control" name="euCompanyName" id="field_euCompanyName"
+                           formControlName="euCompanyName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.country" for="field_country">Country</label>
+                    <input type="text" class="form-control" name="country" id="field_country"
+                           formControlName="country"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.radio1" for="field_radio1">Radio 1</label>
+                    <input type="text" class="form-control" name="radio1" id="field_radio1"
+                           formControlName="radio1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="OPEN">{{ 'icdvIntranetApp.Status.OPEN' | translate }}</option>
+                        <option value="REJECTED">{{ 'icdvIntranetApp.Status.REJECTED' | translate }}</option>
+                        <option value="APPROVED">{{ 'icdvIntranetApp.Status.APPROVED' | translate }}</option>
+                        <option value="CANCELLED">{{ 'icdvIntranetApp.Status.CANCELLED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

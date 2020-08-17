@@ -1,0 +1,28 @@
+{
+  "icdvIntranetApp": {
+    "importInformation": {
+      "home": {
+        "title": "Import Informations",
+        "createLabel": "Create a new Import Information",
+        "createOrEditLabel": "Create or edit a Import Information",
+        "notFound": "No Import Informations found"
+      },
+      "created": "A new Import Information is created with identifier {{ param }}",
+      "updated": "A Import Information is updated with identifier {{ param }}",
+      "deleted": "A Import Information is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Import Information {{ id }}?"
+      },
+      "detail": {
+        "title": "Import Information"
+      },
+      "externalId": "External Id",
+      "descriptionOfGoods": "Description Of Goods",
+      "hsCode": "Hs Code",
+      "unit": "Unit",
+      "quantity": "Quantity",
+      "value": "Value",
+      "importCertAndDeliVerifn": "Import Certificate And Delivery Verification"
+    }
+  }
+}

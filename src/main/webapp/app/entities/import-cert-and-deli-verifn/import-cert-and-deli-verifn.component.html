@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.home.title">Import Cert And Deli Verifns</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-import-cert-and-deli-verifn" [routerLink]="['/import-cert-and-deli-verifn/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.home.createLabel">
+            Create a new Import Cert And Deli Verifn
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="importCertAndDeliVerifns?.length === 0">
+        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.home.notFound">No importCertAndDeliVerifns found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="importCertAndDeliVerifns && importCertAndDeliVerifns.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId">External Id</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.companyName">Company Name</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.uniqueEntityNumberUen">Unique Entity Number Uen</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.address">Address</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.nameOfContactPerson">Name Of Contact Person</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.designation">Designation</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.contactNo">Contact No</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.email">Email</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterCompanyName">Exporter Company Name</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterAddress">Exporter Address</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.euCompanyName">Eu Company Name</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.country">Country</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.radio1">Radio 1</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.status">Status</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let importCertAndDeliVerifn of importCertAndDeliVerifns ;trackBy: trackId">
+                    <td><a [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'view']">{{ importCertAndDeliVerifn.id }}</a></td>
+                    <td>{{ importCertAndDeliVerifn.externalId }}</td>
+                    <td>{{ importCertAndDeliVerifn.companyName }}</td>
+                    <td>{{ importCertAndDeliVerifn.uniqueEntityNumberUen }}</td>
+                    <td>{{ importCertAndDeliVerifn.address }}</td>
+                    <td>{{ importCertAndDeliVerifn.nameOfContactPerson }}</td>
+                    <td>{{ importCertAndDeliVerifn.designation }}</td>
+                    <td>{{ importCertAndDeliVerifn.contactNo }}</td>
+                    <td>{{ importCertAndDeliVerifn.email }}</td>
+                    <td>{{ importCertAndDeliVerifn.exporterCompanyName }}</td>
+                    <td>{{ importCertAndDeliVerifn.exporterAddress }}</td>
+                    <td>{{ importCertAndDeliVerifn.euCompanyName }}</td>
+                    <td>{{ importCertAndDeliVerifn.country }}</td>
+                    <td>{{ importCertAndDeliVerifn.radio1 }}</td>
+                    <td jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(importCertAndDeliVerifn)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

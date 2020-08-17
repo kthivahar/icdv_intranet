@@ -1,0 +1,49 @@
+{
+  "name": "ImportInformation",
+  "fields": [
+    {
+      "fieldName": "externalId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descriptionOfGoods",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hsCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "importCertAndDeliVerifn",
+      "otherEntityRelationshipName": "importInformations",
+      "relationshipName": "importCertAndDeliVerifn",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200817090854",
+  "entityTableName": "import_information",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

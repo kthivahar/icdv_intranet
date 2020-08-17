@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="importInformation">
+            <h2><span jhiTranslate="icdvIntranetApp.importInformation.detail.title">Import Information</span> {{ importInformation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.externalId">External Id</span></dt>
+                <dd>
+                    <span>{{ importInformation.externalId }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.descriptionOfGoods">Description Of Goods</span></dt>
+                <dd>
+                    <span>{{ importInformation.descriptionOfGoods }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.hsCode">Hs Code</span></dt>
+                <dd>
+                    <span>{{ importInformation.hsCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.unit">Unit</span></dt>
+                <dd>
+                    <span>{{ importInformation.unit }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ importInformation.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.value">Value</span></dt>
+                <dd>
+                    <span>{{ importInformation.value }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importInformation.importCertAndDeliVerifn">Import Cert And Deli Verifn</span></dt>
+                <dd>
+                    <div *ngIf="importInformation.importCertAndDeliVerifn">
+                        <a [routerLink]="['/import-cert-and-deli-verifn', importInformation.importCertAndDeliVerifn?.id, 'view']">{{ importInformation.importCertAndDeliVerifn?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/import-information', importInformation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
