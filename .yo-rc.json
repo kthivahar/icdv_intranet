@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "sg.gov.tech.sao.customs.digitalforms.icdv.intranet",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "icdv_intranet",
+    "packageName": "sg.gov.tech.sao.customs.digitalforms.icdv.intranet",
+    "packageFolder": "sg/gov/tech/sao/customs/digitalforms/icdv/intranet",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZTMzZGMwYTRiYWNmNTliNGY4YzZmZTY4NGQ2ZGE0YzgxNTQ5ZGM1NjA2MmQ0ZDE5MTgwZGI5MGQyNGU1NWRlZDNmMmI2YTAxZDYxODlhNzQyY2EwNmRhYjMyYWVjMjg0YTExZWE1YWJlZGFjNWFhZjAwNGM2MGZlNDA0M2ViNzI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "lumen",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1597652495914,
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en"],
+    "blueprints": []
+  }
+}
