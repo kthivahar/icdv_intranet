@@ -89,6 +89,23 @@ public class ImportCertAndDeliVerifnResource {
         return importCertAndDeliVerifnService.findAll();
     }
 
+
+
+    @PostMapping("/import-cert-and-delivery-verification")
+    public ResponseEntity<ImportCertAndDeliVerifn> createImportCertAndDeliveryVerification( @RequestBody FormIOApiDataBody formIOApiDataBody) throws URISyntaxException {
+        log.debug("REST request to save ImportCertAndDeliVerifn : {}", formIOApiDataBody);
+
+        ImportCertAndDeliVerifn importCertAndDeliVerifn = FormIOApiDataBody.getImportCertAndDeliveryCerAndVerif(formIOApiDataBody);
+
+        if (importCertAndDeliVerifn.getId() != null) {
+            throw new BadRequestAlertException("A new importCertAndDeliVerifn cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        ImportCertAndDeliVerifn result = importCertAndDeliVerifnService.save(importCertAndDeliVerifn);
+        return ResponseEntity.created(new URI("/api/import-cert-and-deli-verifns/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
     /**
      * {@code GET  /import-cert-and-deli-verifns/:id} : get the "id" importCertAndDeliVerifn.
      *
