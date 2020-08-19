@@ -74,8 +74,7 @@ public class ImportCertAndDeliVerifn implements Serializable {
     @Column(name = "status")
     private Status status;
 
-    @OneToMany(mappedBy = "importCertAndDeliVerifn", fetch = FetchType.EAGER)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "importCertAndDeliVerifn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ImportInformation> importInformations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
