@@ -8,25 +8,25 @@ import java.util.LinkedHashMap;
 
 public class FormIOApiDataBody extends LinkedHashMap<String, LinkedHashMap> {
 
-    public static ImportCertAndDeliVerifn getImportCertAndDeliveryCerAndVerif(FormIOApiDataBody formIOApiDataBody){
+    public static ImportCertAndDeliVerifn getImportCertAndDeliveryCerAndVerif(FormIOApiDataBody formIOApiDataBody) {
         LinkedHashMap<String, LinkedHashMap> request = formIOApiDataBody.get("request");
-        LinkedHashMap<String, LinkedHashMap> data = request.get("data");
+        LinkedHashMap data = request.get("data");
 
         ImportCertAndDeliVerifn importCertAndDeliVerifn = new ImportCertAndDeliVerifn();
-        importCertAndDeliVerifn.setCompanyName(data.get("ApplicantCompanyName"));
-        importCertAndDeliVerifn.setUniqueEntityNumberUen(data.get("UniqueEntityNumberUen"));
+        importCertAndDeliVerifn.setCompanyName(data.get("ApplicantCompanyName").toString());
+        importCertAndDeliVerifn.setUniqueEntityNumberUen(data.get("UniqueEntityNumberUen").toString());
 
-        ArrayList<LinkedHashMap<String, String>> dataGrid = data.get("dataGrid");
-
-        if(dataGrid != null && dataGrid.size() > 0) {
-            for(LinkedHashMap<String, String> item: dataGrid) {
-                ImportInformation importInformation = new ImportInformation();
-                importInformation.setDescriptionOfGoods(item.get("descriptionOfGoods"));
-                importInformation.setHsCode(item.get("hsCode"));
-                importCertAndDeliVerifn.addImportInformations(importInformation);
-            }
-        }
+        Object obj = data.get("dataGrid");
+//        LinkedHashMap dataGrid = new ArrayList<>();
+//
+//        if (dataGrid != null && dataGrid.size() > 0) {
+//            for (LinkedHashMap<String, String> item : dataGrid) {
+//                ImportInformation importInformation = new ImportInformation();
+//                importInformation.setDescriptionOfGoods(item.get("descriptionOfGoods"));
+//                importInformation.setHsCode(item.get("hsCode"));
+//                importCertAndDeliVerifn.addImportInformations(importInformation);
+//            }
+//        }
         return importCertAndDeliVerifn;
     }
-
 }
