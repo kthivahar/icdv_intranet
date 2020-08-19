@@ -36,7 +36,8 @@ public class FormIOApiDataBody {
                 importInformation.setDescriptionOfGoods(item.get("descriptionOfGoods").toString());
                 importInformation.setHsCode(item.get("hsCode").toString());
                 importInformation.setUnit(item.get("unit").toString());
-                importInformation.setQuantity(Long.valueOf(item.get("quantity")));
+                importInformation.setQuantity(Long.valueOf(item.get("quantity").toString()));
+                importInformation.setValue(Double.valueOf(item.get("value").toString()));
                 importCertAndDeliVerifn.addImportInformations(importInformation);
             }
         }

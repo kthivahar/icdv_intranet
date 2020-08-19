@@ -117,7 +117,7 @@ server:
     session:
       cookie:
         http-only: true
-  port: 9090
+  port: 8080
 
 # Properties to be exposed on the /info management endpoint
 info:
