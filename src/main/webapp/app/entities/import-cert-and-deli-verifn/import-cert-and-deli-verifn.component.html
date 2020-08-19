@@ -36,7 +36,7 @@
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterAddress">Exporter Address</span></th>
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.euCompanyName">Eu Company Name</span></th>
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.country">Country</span></th>
-                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.radio1">Radio 1</span></th>
+                    <!-- <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.radio1">Radio 1</span></th> -->
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.status">Status</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -56,7 +56,7 @@
                     <td>{{ importCertAndDeliVerifn.exporterAddress }}</td>
                     <td>{{ importCertAndDeliVerifn.euCompanyName }}</td>
                     <td>{{ importCertAndDeliVerifn.country }}</td>
-                    <td>{{ importCertAndDeliVerifn.radio1 }}</td>
+                    <!-- <td>{{ importCertAndDeliVerifn.radio1 }}</td> -->
                     <td jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</td>
                     <td class="text-right">
                         <div class="btn-group">
@@ -73,13 +73,13 @@
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
-
+                            -->
                             <button type="submit" (click)="delete(importCertAndDeliVerifn)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
-                            -->
+
                         </div>
                     </td>
                 </tr>
