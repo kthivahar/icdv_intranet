@@ -2,6 +2,7 @@ package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportInformation;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -78,6 +79,7 @@ public class FormIOApiDataBody {
         }
         int random = new Random(1000).nextInt();
         importCertAndDeliVerifn.setExternalId("external" + random);
+        importCertAndDeliVerifn.setStatus(Status.OPEN);
         return importCertAndDeliVerifn;
     }
 
