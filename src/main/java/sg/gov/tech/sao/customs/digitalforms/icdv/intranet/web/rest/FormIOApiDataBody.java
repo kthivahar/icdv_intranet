@@ -14,6 +14,10 @@ public class FormIOApiDataBody {
 
     public static ImportCertAndDeliVerifn getImportCertAndDeliveryCerAndVerif(LinkedHashMap formIOApiDataBody) {
         LinkedHashMap request = (LinkedHashMap) formIOApiDataBody.get("request");
+        if(request == null || (request != null && request.get("data") == null)) {
+            return null;
+        }
+
         LinkedHashMap data = (LinkedHashMap) request.get("data");
 
         ImportCertAndDeliVerifn importCertAndDeliVerifn = new ImportCertAndDeliVerifn();

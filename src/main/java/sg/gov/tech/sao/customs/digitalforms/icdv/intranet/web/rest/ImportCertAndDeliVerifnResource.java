@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -91,10 +92,19 @@ public class ImportCertAndDeliVerifnResource {
     }
 
     @PostMapping("/import-cert-and-deli-verifications")
-    public ResponseEntity<ImportCertAndDeliVerifn> createImportCertAndDeliveryVerification(@RequestBody LinkedHashMap requestBody) throws URISyntaxException {
+    public ResponseEntity<ImportCertAndDeliVerifn> createImportCertAndDeliveryVerification(@RequestBody LinkedHashMap requestBody,
+                                                                                           HttpServletRequest request) throws URISyntaxException {
+
+        String remoteIP = request.getRemoteAddr();
+        String remoteHost = request.getRemoteHost();
+        log.debug("Remote Address " + remoteIP + " Remote host " + remoteHost);
         log.debug("REST request to save ImportCertAndDeliVerifn : {}", requestBody);
 
         ImportCertAndDeliVerifn importCertAndDeliVerifn = FormIOApiDataBody.getImportCertAndDeliveryCerAndVerif(requestBody);
+
+        if(importCertAndDeliVerifn == null) {
+            throw new BadRequestAlertException("A invalid request data", ENTITY_NAME, "idexists");
+        }
 
         if (importCertAndDeliVerifn.getId() != null) {
             throw new BadRequestAlertException("A new importCertAndDeliVerifn cannot already have an ID", ENTITY_NAME, "idexists");
