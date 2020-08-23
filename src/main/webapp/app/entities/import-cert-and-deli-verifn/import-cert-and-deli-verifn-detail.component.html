@@ -7,11 +7,138 @@
 
             <jhi-alert-error></jhi-alert-error>
 
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <!--
+            <button type="button"
+                    [disabled]="disableActions()"
+                    [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+            -->
+            <button type="button"
+                    [disabled]="disableActions()"
+                    (click)="approveAction()"
+                    class="btn btn-success">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.approve">Approve</span>
+            </button>
+
+            <button type="button"
+                    [disabled]="disableActions()"
+                    (click)="rejectAction()"
+                    class="btn btn-danger">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.reject">Reject</span>
+            </button>
+
+            <br>
+            <br>
+
+            <table width="900">
+                <tr>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.companyName" style="font-weight: bold">Company Name</span>
+                    </td>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.uniqueEntityNumberUen" style="font-weight: bold">Unique Entity Number Uen</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.companyName }}</span>
+                    </td>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.uniqueEntityNumberUen }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.address" style="font-weight: bold">Address</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>{{ importCertAndDeliVerifn.address }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.nameOfContactPerson" style="font-weight: bold">Name Of Contact Person</span>
+                    </td>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.designation" style="font-weight: bold">Designation</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.nameOfContactPerson }}</span>
+                    </td>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.designation }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.contactNo" style="font-weight: bold">Contact No</span>
+                    </td>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.email" style="font-weight: bold">Email</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.contactNo }}</span>
+                    </td>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.email }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterCompanyName" style="font-weight: bold">Exporter Company Name</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>{{ importCertAndDeliVerifn.exporterCompanyName }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.exporterAddress" style="font-weight: bold">Exporter Address</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>{{ importCertAndDeliVerifn.exporterAddress }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.country" style="font-weight: bold">Country</span>
+                    </td>
+                    <td>
+                        <span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.status" style="font-weight: bold">Status</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.country }}</span>
+                    </td>
+                    <td>
+                        <span jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</span>
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <!--
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId">External Id</span></dt>
-                <dd>
-                    <span>{{ importCertAndDeliVerifn.externalId }}</span>
-                </dd>
                 <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.companyName">Company Name</span></dt>
                 <dd>
                     <span>{{ importCertAndDeliVerifn.companyName }}</span>
@@ -64,8 +191,12 @@
                 <dd>
                     <span jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</span>
                 </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId">External Id</span></dt>
+                <dd>
+                    <span>{{ importCertAndDeliVerifn.externalId }}</span>
+                </dd>
             </dl>
-
+            -->
             <br>
 
             <div class="table-responsive" id="entities" *ngIf="importCertAndDeliVerifn.importInformations && importCertAndDeliVerifn.importInformations.length > 0">
@@ -92,36 +223,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <br>
-
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
-
-            <!--
-            <button type="button"
-                    [disabled]="disableActions()"
-                    [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
-            -->
-            <button type="button"
-                    [disabled]="disableActions()"
-                    (click)="approveAction()"
-                    class="btn btn-success">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.approve">Approve</span>
-            </button>
-
-            <button type="button"
-                    [disabled]="disableActions()"
-                    (click)="rejectAction()"
-                    class="btn btn-danger">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.reject">Reject</span>
-            </button>
         </div>
     </div>
 </div>
