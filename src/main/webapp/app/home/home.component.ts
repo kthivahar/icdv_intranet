@@ -30,10 +30,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if(!this.accountService.isAuthenticated()) {
       this.activatedRoute.queryParams.subscribe(params => {
-        const userName = params['userName'];
+        const userName : string = params['userName'];
         this.autoLogin = params['auto_login'];
         if(userName != null) {
-          this.displayName = userName;
+          const userTempName = userName.split("@",1);
+          this.displayName = userTempName[0];
         }
       });
       // auto login

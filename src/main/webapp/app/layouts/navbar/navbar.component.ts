@@ -44,9 +44,10 @@ export class NavbarComponent implements OnInit {
 
     // Set the display name
     this.activatedRoute.queryParams.subscribe(params => {
-      const userName = params['userName'];
+      const userName : string = params['userName'];
       if(userName != null) {
-        this.displayUserName = userName;
+        const userTempName = userName.split("@",1);
+        this.displayUserName = userTempName[0];
       }
     });
   }
