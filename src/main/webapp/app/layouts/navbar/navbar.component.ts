@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   languages = LANGUAGES;
   swaggerEnabled?: boolean;
   version: string;
-  displayUserName: string = "";
+  displayUserName = "";
 
   constructor(
     private loginService: LoginService,
