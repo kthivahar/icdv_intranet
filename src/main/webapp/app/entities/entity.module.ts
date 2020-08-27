@@ -13,6 +13,10 @@ import { RouterModule } from '@angular/router';
         path: 'import-information',
         loadChildren: () => import('./import-information/import-information.module').then(m => m.IcdvIntranetImportInformationModule),
       },
+      {
+        path: 'content',
+        loadChildren: () => import('./content/content.module').then(m => m.IcdvIntranetContentModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

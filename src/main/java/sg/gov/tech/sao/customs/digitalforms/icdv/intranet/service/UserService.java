@@ -1,16 +1,6 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Authority;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.AuthorityRepository;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.AuthoritiesConstants;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.SecurityUtils;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
-
 import io.github.jhipster.security.RandomUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -20,6 +10,14 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Authority;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.AuthorityRepository;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.AuthoritiesConstants;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.SecurityUtils;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

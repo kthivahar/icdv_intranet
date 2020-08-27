@@ -1,16 +1,15 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
 /**
  * A ImportCertAndDeliVerifn.
@@ -75,7 +74,12 @@ public class ImportCertAndDeliVerifn implements Serializable {
     private Status status;
 
     @OneToMany(mappedBy = "importCertAndDeliVerifn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<ImportInformation> importInformations = new HashSet<>();
+
+    @OneToMany(mappedBy = "importCertAndDeliVerifn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Content> contents = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -291,6 +295,31 @@ public class ImportCertAndDeliVerifn implements Serializable {
 
     public void setImportInformations(Set<ImportInformation> importInformations) {
         this.importInformations = importInformations;
+    }
+
+    public Set<Content> getContents() {
+        return contents;
+    }
+
+    public ImportCertAndDeliVerifn contents(Set<Content> contents) {
+        this.contents = contents;
+        return this;
+    }
+
+    public ImportCertAndDeliVerifn addContents(Content content) {
+        this.contents.add(content);
+        content.setImportCertAndDeliVerifn(this);
+        return this;
+    }
+
+    public ImportCertAndDeliVerifn removeContents(Content content) {
+        this.contents.remove(content);
+        content.setImportCertAndDeliVerifn(null);
+        return this;
+    }
+
+    public void setContents(Set<Content> contents) {
+        this.contents = contents;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

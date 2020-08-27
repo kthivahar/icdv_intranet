@@ -4,25 +4,18 @@
     {
       "fieldName": "externalId",
       "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "companyName",
       "fieldType": "String",
-      "fieldValidateRules": [
-        "required",
-        "maxlength"
-      ],
+      "fieldValidateRules": ["required", "maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
       "fieldName": "uniqueEntityNumberUen",
       "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "address",
@@ -76,6 +69,12 @@
       "otherEntityName": "importInformation",
       "otherEntityRelationshipName": "importCertAndDeliVerifn",
       "relationshipName": "importInformations"
+    },
+    {
+      "relationshipName": "contents",
+      "otherEntityName": "content",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "importCertAndDeliVerifn"
     }
   ],
   "changelogDate": "20200817090754",
@@ -88,5 +87,7 @@
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": "*"
+  "applications": "*",
+  "searchEngine": false,
+  "databaseType": "sql"
 }

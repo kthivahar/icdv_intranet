@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="content">
+            <h2><span jhiTranslate="icdvIntranetApp.content.detail.title">Content</span> {{ content.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="icdvIntranetApp.content.name">Name</span></dt>
+                <dd>
+                    <span>{{ content.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.content.url">Url</span></dt>
+                <dd>
+                    <span>{{ content.url }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.content.orgName">Org Name</span></dt>
+                <dd>
+                    <span>{{ content.orgName }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.content.bucketName">Bucket Name</span></dt>
+                <dd>
+                    <span>{{ content.bucketName }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.content.objectKey">Object Key</span></dt>
+                <dd>
+                    <span>{{ content.objectKey }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/content', content.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,5 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.AuditEventService;
-
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.springframework.boot.actuate.audit.AuditEvent;
@@ -12,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.AuditEventService;
 
 import java.time.Instant;
 import java.time.LocalDate;

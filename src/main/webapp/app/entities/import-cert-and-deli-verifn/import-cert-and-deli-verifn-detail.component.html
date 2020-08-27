@@ -133,8 +133,6 @@
                         <span jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</span>
                     </td>
                 </tr>
-
-
             </table>
 
             <!--
@@ -220,6 +218,13 @@
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.value }}</td>
                     </tr>
+                    <br>
+
+                    <span style="font-weight: bold" *ngIf="importCertAndDeliVerifn.contents && importCertAndDeliVerifn.contents.length > 0">Attachments</span>
+                    <br>
+                    <span *ngFor="let item of importCertAndDeliVerifn.contents">
+                        <a href="{{item.url}}" target="_blank"> {{item.orgName}} </a>
+                    </span>
                     </tbody>
                 </table>
             </div>

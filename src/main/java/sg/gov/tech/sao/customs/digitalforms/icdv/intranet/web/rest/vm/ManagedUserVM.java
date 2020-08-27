@@ -1,6 +1,7 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.vm;
 
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
+
 import javax.validation.constraints.Size;
 
 /**

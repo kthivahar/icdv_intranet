@@ -9,6 +9,8 @@
         "main": "Menu",
         "importCertAndDeliVerifn": "Import Certificate And Delivery Verification",
         "importInformation": "Import Information",
+        "content": "Content",
+        "importCertAndDeliVerifn": "Import Cert And Deli Verifn",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

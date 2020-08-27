@@ -2,19 +2,19 @@
   "icdvIntranetApp": {
     "importCertAndDeliVerifn": {
       "home": {
-        "title": "Import Certificate And Delivery Verification",
-        "createLabel": "Create a new Import Certificate And Delivery Verification",
-        "createOrEditLabel": "Create or edit a Import Certificate And Delivery Verification",
-        "notFound": "No Import Certificate And Delivery Verification found"
+        "title": "Import Certificate And Delivery Verification (ICDV)",
+        "createLabel": "Create a new Import Certificate And Delivery Verification (ICDV)",
+        "createOrEditLabel": "Create or edit a Import Certificate And Delivery Verification (ICDV)",
+        "notFound": "No Import Certificate And Delivery Verification (ICDV) are found"
       },
-      "created": "A new Import Certificate And Delivery Verification is created with identifier {{ param }}",
-      "updated": "A Import Certificate And Delivery Verification is updated with identifier {{ param }}",
-      "deleted": "A Import Certificate And Delivery Verification is deleted with identifier {{ param }}",
+      "created": "A new Import Certificate And Delivery Verification (ICDV) is created with identifier {{ param }}",
+      "updated": "A Import Certificate And Delivery Verification (ICDV) is updated with identifier {{ param }}",
+      "deleted": "A Import Certificate And Delivery Verification (ICDV) is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Import Certificate And Delivery Verification {{ id }}?"
+        "question": "Are you sure you want to delete Import Certificate And Delivery Verification (ICDV) {{ id }}?"
       },
       "detail": {
-        "title": "Import Certificate And Delivery Verification(ICDV)"
+        "title": "Import Certificate And Delivery Verification (ICDV)"
       },
       "externalId": "External Id",
       "companyName": "Company Name",
@@ -30,7 +30,8 @@
       "country": "Country",
       "radio1": "Radio 1",
       "status": "Status",
-      "importInformations": "Import Informations"
+      "importInformations": "Import Informations",
+      "contents": "Contents"
     }
   }
 }

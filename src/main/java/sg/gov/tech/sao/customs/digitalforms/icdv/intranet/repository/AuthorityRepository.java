@@ -1,8 +1,7 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Authority;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Authority;
 
 /**
  * Spring Data JPA repository for the {@link Authority} entity.

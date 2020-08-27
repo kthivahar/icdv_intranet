@@ -1,12 +1,11 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

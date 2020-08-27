@@ -1,11 +1,10 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Content;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportInformation;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Status;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Random;
@@ -74,13 +73,39 @@ public class FormIOApiDataBody {
                 if(quntity != null) {
                     importInformation.setQuantity(quntity);
                 }
-                Double value = getDoubleValue(item.get("value"));
+                Double value = getDoubleValue(item.get("valueS"));
                 if(value != null) {
                     importInformation.setValue(value);
                 }
                 importCertAndDeliVerifn.addImportInformations(importInformation);
             }
         }
+
+        List supportingsDoc = (List) data.get("supportingDocs");
+
+        if (supportingsDoc != null && supportingsDoc.size() > 0) {
+            for (Object itemObject : supportingsDoc) {
+                LinkedHashMap item = (LinkedHashMap) itemObject;
+                Content content = new Content();
+                if(item.get("name") != null) {
+                    content.setName(item.get("name").toString());
+                }
+                if(item.get("url") != null) {
+                    content.setUrl(item.get("url").toString());
+                }
+                if(item.get("originalName") != null) {
+                    content.setOrgName(item.get("originalName").toString());
+                }
+                if(item.get("type") != null) {
+                    content.setBucketName(item.get("type").toString());
+                }
+                if(item.get("key") != null) {
+                    content.setObjectKey(item.get("key").toString());
+                }
+                importCertAndDeliVerifn.addContents(content);
+            }
+        }
+
         int random = new Random(1000).nextInt();
         importCertAndDeliVerifn.setExternalId("external" + random);
         importCertAndDeliVerifn.setStatus(Status.OPEN);

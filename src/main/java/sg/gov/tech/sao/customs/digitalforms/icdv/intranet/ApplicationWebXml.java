@@ -1,7 +1,6 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet;
 
 import io.github.jhipster.config.DefaultProfileUtil;
-
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

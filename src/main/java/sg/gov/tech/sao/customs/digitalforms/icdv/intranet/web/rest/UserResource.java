@@ -1,20 +1,8 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.AuthoritiesConstants;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.MailService;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.UserService;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.EmailAlreadyUsedException;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.LoginAlreadyUsedException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,11 +14,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.AuthoritiesConstants;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.MailService;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.UserService;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.EmailAlreadyUsedException;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.LoginAlreadyUsedException;
 
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing users.

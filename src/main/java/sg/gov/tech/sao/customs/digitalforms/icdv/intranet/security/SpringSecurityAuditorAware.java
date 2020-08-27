@@ -1,11 +1,10 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security;
 
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.stereotype.Component;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
 
 import java.util.Optional;
-
-import org.springframework.data.domain.AuditorAware;
-import org.springframework.stereotype.Component;
 
 /**
  * Implementation of {@link AuditorAware} based on Spring Security.

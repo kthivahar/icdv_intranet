@@ -1,9 +1,5 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.audit.AuditEventConverter;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.PersistentAuditEvent;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.actuate.audit.AuditEvent;
@@ -11,9 +7,14 @@ import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.Constants;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.audit.AuditEventConverter;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.PersistentAuditEvent;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * An implementation of Spring Boot's {@link AuditEventRepository}.

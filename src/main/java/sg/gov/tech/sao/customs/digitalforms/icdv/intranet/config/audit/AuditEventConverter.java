@@ -1,10 +1,9 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.config.audit;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.PersistentAuditEvent;
-
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.PersistentAuditEvent;
 
 import java.util.*;
 

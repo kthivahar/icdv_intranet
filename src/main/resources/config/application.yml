@@ -164,3 +164,9 @@ jhipster:
 # ===================================================================
 
 # application:
+app:
+  minio:
+    serverurl: http://35.198.212.115:9000
+    accsskey: Welcome1#
+    secretkey: Welcome1#
+    bucketname: formio

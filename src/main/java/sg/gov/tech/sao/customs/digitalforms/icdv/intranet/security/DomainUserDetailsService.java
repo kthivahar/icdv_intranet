@@ -1,7 +1,5 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +10,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
 
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 /**

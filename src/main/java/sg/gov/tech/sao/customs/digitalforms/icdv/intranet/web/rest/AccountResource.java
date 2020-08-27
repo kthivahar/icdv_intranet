@@ -1,25 +1,25 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.SecurityUtils;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.MailService;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.UserService;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.PasswordChangeDTO;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.*;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.vm.KeyAndPasswordVM;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.vm.ManagedUserVM;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.User;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.UserRepository;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.security.SecurityUtils;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.EmailAlreadyUsedException;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.InvalidPasswordException;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.MailService;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.UserService;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.PasswordChangeDTO;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.dto.UserDTO;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.vm.KeyAndPasswordVM;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.vm.ManagedUserVM;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.*;
+import java.util.Optional;
 
 /**
  * REST controller for managing the current user's account.
@@ -55,7 +55,6 @@ public class AccountResource {
      * @param managedUserVM the managed user View Model.
      * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
      * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
-     * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
      */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)

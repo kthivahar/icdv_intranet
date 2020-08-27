@@ -1,11 +1,11 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 /**
@@ -43,6 +43,7 @@ public class ImportInformation implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "importInformations", allowSetters = true)
+    @JsonBackReference
     private ImportCertAndDeliVerifn importCertAndDeliVerifn;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
