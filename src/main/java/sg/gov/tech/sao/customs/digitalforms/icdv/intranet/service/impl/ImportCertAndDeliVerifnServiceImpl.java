@@ -57,12 +57,12 @@ public class ImportCertAndDeliVerifnServiceImpl implements ImportCertAndDeliVeri
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<ImportCertAndDeliVerifn> findOne(Long id) {
+    public Optional<ImportCertAndDeliVerifn> findOne(Long id, boolean updateContenturl) {
         log.debug("Request to get ImportCertAndDeliVerifn : {}", id);
 
         Optional<ImportCertAndDeliVerifn> optionalImportCertAndDeliVerifn
             = importCertAndDeliVerifnRepository.findById(id);
-        if(optionalImportCertAndDeliVerifn.isPresent()) {
+        if(optionalImportCertAndDeliVerifn.isPresent() && updateContenturl) {
             ImportCertAndDeliVerifn importCertAndDeliVerifn = optionalImportCertAndDeliVerifn.get();
             if(importCertAndDeliVerifn.getContents() != null && importCertAndDeliVerifn.getContents().size() > 0) {
                 for (Content content : importCertAndDeliVerifn.getContents()) {

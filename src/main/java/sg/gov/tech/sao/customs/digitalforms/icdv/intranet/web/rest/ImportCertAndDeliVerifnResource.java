@@ -90,6 +90,12 @@ public class ImportCertAndDeliVerifnResource {
         return importCertAndDeliVerifnService.findAll();
     }
 
+    @GetMapping("/import-cert-and-deli-verifns-ext")
+    public List<ImportCertAndDeliVerifn> getAllImportCertAndDeliVerifnsExt() {
+        log.debug("REST request to get all ImportCertAndDeliVerifns");
+        return importCertAndDeliVerifnService.findAll();
+    }
+
     @PostMapping("/import-cert-and-deli-verifications")
     public ResponseEntity<ImportCertAndDeliVerifn> createImportCertAndDeliveryVerification(@RequestBody LinkedHashMap requestBody,
                                                                                            HttpServletRequest request) throws URISyntaxException {
@@ -123,7 +129,22 @@ public class ImportCertAndDeliVerifnResource {
     @GetMapping("/import-cert-and-deli-verifns/{id}")
     public ResponseEntity<ImportCertAndDeliVerifn> getImportCertAndDeliVerifn(@PathVariable Long id) {
         log.debug("REST request to get ImportCertAndDeliVerifn : {}", id);
-        Optional<ImportCertAndDeliVerifn> importCertAndDeliVerifn = importCertAndDeliVerifnService.findOne(id);
+        Optional<ImportCertAndDeliVerifn> importCertAndDeliVerifn = importCertAndDeliVerifnService.findOne(id, true);
+        importCertAndDeliVerifn
+            .ifPresent(e-> log.debug("Import cert and delivery verification import items :  " + e.getImportInformations()));
+        return ResponseUtil.wrapOrNotFound(importCertAndDeliVerifn);
+    }
+
+    /**
+     * {@code GET  /import-cert-and-deli-verifns/:id} : get the "id" importCertAndDeliVerifn.
+     *
+     * @param id the id of the importCertAndDeliVerifn to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the importCertAndDeliVerifn, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/import-cert-and-deli-verifns-ext/{id}")
+    public ResponseEntity<ImportCertAndDeliVerifn> getImportCertAndDeliVerifnExt(@PathVariable Long id) {
+        log.debug("REST request to get ImportCertAndDeliVerifn : {}", id);
+        Optional<ImportCertAndDeliVerifn> importCertAndDeliVerifn = importCertAndDeliVerifnService.findOne(id, false);
         importCertAndDeliVerifn
             .ifPresent(e-> log.debug("Import cert and delivery verification import items :  " + e.getImportInformations()));
         return ResponseUtil.wrapOrNotFound(importCertAndDeliVerifn);

@@ -32,7 +32,7 @@ public interface ImportCertAndDeliVerifnService {
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<ImportCertAndDeliVerifn> findOne(Long id);
+    Optional<ImportCertAndDeliVerifn> findOne(Long id, boolean isUpdateContentUrl);
 
     /**
      * Delete the "id" importCertAndDeliVerifn.
