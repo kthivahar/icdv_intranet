@@ -3,8 +3,9 @@ package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Content;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportInformation;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Status;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
+import java.time.ZonedDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Random;
@@ -108,6 +109,7 @@ public class FormIOApiDataBody {
 
         int random = new Random(1000).nextInt();
         importCertAndDeliVerifn.setExternalId("external" + random);
+        importCertAndDeliVerifn.setCreatedOn(ZonedDateTime.now());
         importCertAndDeliVerifn.setStatus(Status.OPEN);
         return importCertAndDeliVerifn;
     }

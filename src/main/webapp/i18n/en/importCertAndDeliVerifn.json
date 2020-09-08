@@ -18,7 +18,7 @@
       },
       "externalId": "External Id",
       "companyName": "Company Name",
-      "uniqueEntityNumberUen": "Unique Entity Number Uen",
+      "uniqueEntityNumberUen": "Unique Entity Number (UEN)",
       "address": "Address",
       "nameOfContactPerson": "Name Of Contact Person",
       "designation": "Designation",

@@ -61,6 +61,10 @@
       "fieldName": "status",
       "fieldType": "Status",
       "fieldValues": "OPEN,REJECTED,APPROVED,CANCELLED"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "ZonedDateTime"
     }
   ],
   "relationships": [

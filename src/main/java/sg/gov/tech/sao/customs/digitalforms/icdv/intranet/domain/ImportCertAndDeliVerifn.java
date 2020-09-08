@@ -5,11 +5,14 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
 /**
  * A ImportCertAndDeliVerifn.
@@ -72,6 +75,9 @@ public class ImportCertAndDeliVerifn implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
+
+    @Column(name = "created_on")
+    private ZonedDateTime createdOn;
 
     @OneToMany(mappedBy = "importCertAndDeliVerifn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -272,6 +278,19 @@ public class ImportCertAndDeliVerifn implements Serializable {
         this.status = status;
     }
 
+    public ZonedDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public ImportCertAndDeliVerifn createdOn(ZonedDateTime createdOn) {
+        this.createdOn = createdOn;
+        return this;
+    }
+
+    public void setCreatedOn(ZonedDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
     public Set<ImportInformation> getImportInformations() {
         return importInformations;
     }
@@ -358,6 +377,7 @@ public class ImportCertAndDeliVerifn implements Serializable {
             ", country='" + getCountry() + "'" +
             ", radio1='" + getRadio1() + "'" +
             ", status='" + getStatus() + "'" +
+            ", createdOn='" + getCreatedOn() + "'" +
             "}";
     }
 }

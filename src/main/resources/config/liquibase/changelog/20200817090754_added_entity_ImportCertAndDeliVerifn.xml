@@ -57,8 +57,12 @@
             <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="import_cert_and_deli_verifn" columnName="created_on" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200817090754-1-relations" author="jhipster">
@@ -94,6 +98,7 @@
             <column name="country" type="string"/>
             <column name="radio_1" type="string"/>
             <column name="status" type="string"/>
+            <column name="created_on" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

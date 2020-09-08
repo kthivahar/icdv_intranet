@@ -24,7 +24,7 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId">External Id</span></th>
+<!--                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.externalId">External Id</span></th>-->
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.companyName">Company Name</span></th>
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.uniqueEntityNumberUen">Unique Entity Number Uen</span></th>
 <!--                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.address">Address</span></th>-->
@@ -38,13 +38,14 @@
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.country">Country</span></th>
                     <!-- <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.radio1">Radio 1</span></th> -->
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.importCertAndDeliVerifn.status">Status</span></th>
+                    <th scope="col" ><span>Created On</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let importCertAndDeliVerifn of importCertAndDeliVerifns ;trackBy: trackId">
                     <td><a [routerLink]="['/import-cert-and-deli-verifn', importCertAndDeliVerifn.id, 'view']">{{ importCertAndDeliVerifn.id }}</a></td>
-                    <td>{{ importCertAndDeliVerifn.externalId }}</td>
+<!--                    <td>{{ importCertAndDeliVerifn.externalId }}</td>-->
                     <td>{{ importCertAndDeliVerifn.companyName }}</td>
                     <td>{{ importCertAndDeliVerifn.uniqueEntityNumberUen }}</td>
 <!--                    <td>{{ importCertAndDeliVerifn.address }}</td>-->
@@ -58,6 +59,7 @@
                     <td>{{ importCertAndDeliVerifn.country }}</td>
                     <!-- <td>{{ importCertAndDeliVerifn.radio1 }}</td> -->
                     <td jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</td>
+                    <td>{{ importCertAndDeliVerifn.createdOn.format('DD-MM-YY HH:mm:ss') }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

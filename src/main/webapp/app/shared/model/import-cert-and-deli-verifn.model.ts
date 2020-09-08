@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { IImportInformation } from 'app/shared/model/import-information.model';
 import { IContent } from 'app/shared/model/content.model';
 import { Status } from 'app/shared/model/enumerations/status.model';
@@ -18,6 +19,7 @@ export interface IImportCertAndDeliVerifn {
   country?: string;
   radio1?: string;
   status?: Status;
+  createdOn?: Moment;
   importInformations?: IImportInformation[];
   contents?: IContent[];
 }
@@ -39,6 +41,7 @@ export class ImportCertAndDeliVerifn implements IImportCertAndDeliVerifn {
     public country?: string,
     public radio1?: string,
     public status?: Status,
+    public createdOn?: Moment,
     public importInformations?: IImportInformation[],
     public contents?: IContent[]
   ) {}
