@@ -51,6 +51,7 @@ export class ImportCertAndDeliVerifnDetailComponent implements OnInit {
       country: this.importCertAndDeliVerifn?.country,
       radio1: this.importCertAndDeliVerifn?.radio1,
       status: Status.APPROVED,
+      createdOn: this.importCertAndDeliVerifn?.createdOn,
     };
 
     this.updateCostStmt(imanufactringCostStmt);
@@ -75,6 +76,7 @@ export class ImportCertAndDeliVerifnDetailComponent implements OnInit {
       country: this.importCertAndDeliVerifn?.country,
       radio1: this.importCertAndDeliVerifn?.radio1,
       status: Status.REJECTED,
+      createdOn: this.importCertAndDeliVerifn?.createdOn,
     };
     this.updateCostStmt(imanufactringCostStmt)
     alert("Successfully rejected" +
