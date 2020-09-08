@@ -59,7 +59,7 @@
                     <td>{{ importCertAndDeliVerifn.country }}</td>
                     <!-- <td>{{ importCertAndDeliVerifn.radio1 }}</td> -->
                     <td jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</td>
-                    <td>{{ importCertAndDeliVerifn.createdOn.format('DD-MM-YY HH:mm:ss') }}</td>
+                    <td>{{ importCertAndDeliVerifn.createdOn | date:'medium' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

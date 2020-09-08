@@ -133,6 +133,16 @@
                         <span jhiTranslate="{{ 'icdvIntranetApp.Status.' + importCertAndDeliVerifn.status }}">{{ importCertAndDeliVerifn.status }}</span>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <span style="font-weight: bold">Created On</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ importCertAndDeliVerifn.createdOn  | date:'medium' }}</span>
+                    </td>
+                </tr>
             </table>
 
             <!--

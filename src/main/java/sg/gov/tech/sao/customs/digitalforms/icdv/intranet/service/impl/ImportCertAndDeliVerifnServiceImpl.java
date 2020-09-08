@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Content;
@@ -51,9 +52,8 @@ public class ImportCertAndDeliVerifnServiceImpl implements ImportCertAndDeliVeri
     @Transactional(readOnly = true)
     public List<ImportCertAndDeliVerifn> findAll() {
         log.debug("Request to get all ImportCertAndDeliVerifns");
-        return importCertAndDeliVerifnRepository.findAll();
+        return importCertAndDeliVerifnRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
-
 
     @Override
     @Transactional(readOnly = true)
