@@ -1,0 +1,222 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-manuf-cost-stmt-heading" jhiTranslate="icdvIntranetApp.manufCostStmt.home.createOrEditLabel">Create or edit a Manuf Cost Stmt</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.nameOfManufacturer" for="field_nameOfManufacturer">Name Of Manufacturer</label>
+                    <input type="text" class="form-control" name="nameOfManufacturer" id="field_nameOfManufacturer"
+                           formControlName="nameOfManufacturer"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.uniqueEntityNumber" for="field_uniqueEntityNumber">Unique Entity Number</label>
+                    <input type="text" class="form-control" name="uniqueEntityNumber" id="field_uniqueEntityNumber"
+                           formControlName="uniqueEntityNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.ftaScheme" for="field_ftaScheme">Fta Scheme</label>
+                    <input type="text" class="form-control" name="ftaScheme" id="field_ftaScheme"
+                           formControlName="ftaScheme"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.isQRVC" for="field_isQRVC">Is QRVC</label>
+                    <input type="checkbox" class="form-control" name="isQRVC" id="field_isQRVC"
+                           formControlName="isQRVC"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.isCTC" for="field_isCTC">Is CTC</label>
+                    <input type="checkbox" class="form-control" name="isCTC" id="field_isCTC"
+                           formControlName="isCTC"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.isMP" for="field_isMP">Is MP</label>
+                    <input type="checkbox" class="form-control" name="isMP" id="field_isMP"
+                           formControlName="isMP"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.descriptionOfGoods" for="field_descriptionOfGoods">Description Of Goods</label>
+                    <input type="text" class="form-control" name="descriptionOfGoods" id="field_descriptionOfGoods"
+                           formControlName="descriptionOfGoods"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.model" for="field_model">Model</label>
+                    <input type="text" class="form-control" name="model" id="field_model"
+                           formControlName="model"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.hsCodeOfGoods" for="field_hsCodeOfGoods">Hs Code Of Goods</label>
+                    <input type="text" class="form-control" name="hsCodeOfGoods" id="field_hsCodeOfGoods"
+                           formControlName="hsCodeOfGoods"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.statementDate" for="field_statementDate">Statement Date</label>
+                    <div class="d-flex">
+                        <input id="field_statementDate" type="datetime-local" class="form-control" name="statementDate" formControlName="statementDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.incotermOfFta" for="field_incotermOfFta">Incoterm Of Fta</label>
+                    <input type="text" class="form-control" name="incotermOfFta" id="field_incotermOfFta"
+                           formControlName="incotermOfFta"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.fobValueOfGoods" for="field_fobValueOfGoods">Fob Value Of Goods</label>
+                    <input type="number" class="form-control" name="fobValueOfGoods" id="field_fobValueOfGoods"
+                           formControlName="fobValueOfGoods"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.noOfMCSUnits" for="field_noOfMCSUnits">No Of MCS Units</label>
+                    <input type="number" class="form-control" name="noOfMCSUnits" id="field_noOfMCSUnits"
+                           formControlName="noOfMCSUnits"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.directLabourCost" for="field_directLabourCost">Direct Labour Cost</label>
+                    <input type="number" class="form-control" name="directLabourCost" id="field_directLabourCost"
+                           formControlName="directLabourCost"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.directOverheadCost" for="field_directOverheadCost">Direct Overhead Cost</label>
+                    <input type="number" class="form-control" name="directOverheadCost" id="field_directOverheadCost"
+                           formControlName="directOverheadCost"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.profit" for="field_profit">Profit</label>
+                    <input type="number" class="form-control" name="profit" id="field_profit"
+                           formControlName="profit"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.otherCost" for="field_otherCost">Other Cost</label>
+                    <input type="number" class="form-control" name="otherCost" id="field_otherCost"
+                           formControlName="otherCost"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.isDeclared1" for="field_isDeclared1">Is Declared 1</label>
+                    <input type="checkbox" class="form-control" name="isDeclared1" id="field_isDeclared1"
+                           formControlName="isDeclared1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declaringName1" for="field_declaringName1">Declaring Name 1</label>
+                    <input type="text" class="form-control" name="declaringName1" id="field_declaringName1"
+                           formControlName="declaringName1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declarePosition1" for="field_declarePosition1">Declare Position 1</label>
+                    <input type="text" class="form-control" name="declarePosition1" id="field_declarePosition1"
+                           formControlName="declarePosition1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declareOn1" for="field_declareOn1">Declare On 1</label>
+                    <div class="d-flex">
+                        <input id="field_declareOn1" type="datetime-local" class="form-control" name="declareOn1" formControlName="declareOn1" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.isDeclared2" for="field_isDeclared2">Is Declared 2</label>
+                    <input type="checkbox" class="form-control" name="isDeclared2" id="field_isDeclared2"
+                           formControlName="isDeclared2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declaringName2" for="field_declaringName2">Declaring Name 2</label>
+                    <input type="text" class="form-control" name="declaringName2" id="field_declaringName2"
+                           formControlName="declaringName2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declarePosition2" for="field_declarePosition2">Declare Position 2</label>
+                    <input type="text" class="form-control" name="declarePosition2" id="field_declarePosition2"
+                           formControlName="declarePosition2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declareOn2" for="field_declareOn2">Declare On 2</label>
+                    <div class="d-flex">
+                        <input id="field_declareOn2" type="datetime-local" class="form-control" name="declareOn2" formControlName="declareOn2" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.isDeclared3" for="field_isDeclared3">Is Declared 3</label>
+                    <input type="checkbox" class="form-control" name="isDeclared3" id="field_isDeclared3"
+                           formControlName="isDeclared3"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declaringName3" for="field_declaringName3">Declaring Name 3</label>
+                    <input type="text" class="form-control" name="declaringName3" id="field_declaringName3"
+                           formControlName="declaringName3"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declarePosition3" for="field_declarePosition3">Declare Position 3</label>
+                    <input type="text" class="form-control" name="declarePosition3" id="field_declarePosition3"
+                           formControlName="declarePosition3"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.declareOn3" for="field_declareOn3">Declare On 3</label>
+                    <div class="d-flex">
+                        <input id="field_declareOn3" type="datetime-local" class="form-control" name="declareOn3" formControlName="declareOn3" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.totalNonOrigMat" for="field_totalNonOrigMat">Total Non Orig Mat</label>
+                    <input type="number" class="form-control" name="totalNonOrigMat" id="field_totalNonOrigMat"
+                           formControlName="totalNonOrigMat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.totalOrigMat" for="field_totalOrigMat">Total Orig Mat</label>
+                    <input type="number" class="form-control" name="totalOrigMat" id="field_totalOrigMat"
+                           formControlName="totalOrigMat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.qvcRvc" for="field_qvcRvc">Qvc Rvc</label>
+                    <input type="number" class="form-control" name="qvcRvc" id="field_qvcRvc"
+                           formControlName="qvcRvc"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

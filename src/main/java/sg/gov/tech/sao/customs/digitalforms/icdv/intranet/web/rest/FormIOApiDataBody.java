@@ -1,8 +1,6 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Content;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportInformation;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.*;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
 import java.time.ZonedDateTime;
@@ -138,5 +136,108 @@ public class FormIOApiDataBody {
             }
         }
         return doubleValue;
+    }
+
+    public static ManufCostStmt getManufactuingCostStmt(LinkedHashMap formIOApiDataBody) {
+        LinkedHashMap request = (LinkedHashMap) formIOApiDataBody.get("request");
+        if(request == null || (request != null && request.get("data") == null)) {
+            return null;
+        }
+
+        LinkedHashMap data = (LinkedHashMap) request.get("data");
+
+        ManufCostStmt manufCostStmt = new ManufCostStmt();
+        if(data.get("nameOfManufacturer") != null) {
+            manufCostStmt.setNameOfManufacturer(data.get("nameOfManufacturer").toString());
+        }
+        if(data.get("uniqueEntityNumber") != null) {
+            manufCostStmt.setUniqueEntityNumber(data.get("uniqueEntityNumber").toString());
+        }
+        if(data.get("ftaScheme") != null) {
+            manufCostStmt.setFtaScheme(data.get("ftaScheme").toString());
+        }
+        if(data.get("isQRVC") != null) {
+            manufCostStmt.setIsQRVC(Boolean.valueOf(data.get("isQRVC").toString()));
+        }
+        if(data.get("isCTC") != null) {
+            manufCostStmt.setIsCTC(Boolean.valueOf(data.get("isCTC").toString()));
+        }
+        if(data.get("isMP") != null) {
+            manufCostStmt.setIsCTC(Boolean.valueOf(data.get("isMP").toString()));
+        }
+        if(data.get("descriptionOfGoods") != null) {
+            manufCostStmt.setDescriptionOfGoods(data.get("descriptionOfGoods").toString());
+        }
+        if(data.get("model") != null) {
+            manufCostStmt.setModel(data.get("model").toString());
+        }
+        if(data.get("hsCodeOfGoods") != null) {
+            manufCostStmt.setHsCodeOfGoods(data.get("hsCodeOfGoods").toString());
+        }
+        if(data.get("incotermOfFta") != null) {
+            manufCostStmt.setIncotermOfFta(data.get("incotermOfFta").toString());
+        }
+        if(data.get("fobValueOfGoods") != null) {
+            manufCostStmt.setFobValueOfGoods(getDoubleValue(data.get("fobValueOfGoods")));
+        }
+        if(data.get("noOfMCSUnits") != null) {
+            manufCostStmt.setFobValueOfGoods(getDoubleValue(data.get("noOfMCSUnits")));
+        }
+
+        List dataGrid = (List) data.get("materials");
+
+        if (dataGrid != null && dataGrid.size() > 0) {
+            for (Object itemObject : dataGrid) {
+                LinkedHashMap item = (LinkedHashMap) itemObject;
+                Material material = new Material();
+                if(item.get("descriptionOfMaterials") != null) {
+                    material.setDescription(item.get("descriptionOfMaterials").toString());
+                }
+                if(item.get("hsCode") != null) {
+                    material.setHscode(item.get("hsCode").toString());
+                }
+                if(item.get("countryOfOrigin") != null) {
+                    material.setCountryOfOrigin(item.get("countryOfOrigin").toString());
+                }
+                if(item.get("nameOfManufacturer") != null) {
+                    material.setNameOfManufacturer(item.get("nameOfManufacturer").toString());
+                }
+                Double valueNonOrg = getDoubleValue(item.get("valueOfMaterialsNonOriginating"));
+                if(valueNonOrg != null) {
+                    material.setValueOfMaterialsNonOriginating(valueNonOrg);
+                }
+                Double valueOrg = getDoubleValue(item.get("valueOfMaterialOriginating"));
+                if(valueOrg != null) {
+                    material.setValueOfMaterialsNonOriginating(valueOrg);
+                }
+                manufCostStmt.addMaterial(material);
+            }
+        }
+
+        List supportingsDoc = (List) data.get("supportingDocuments");
+
+        if (supportingsDoc != null && supportingsDoc.size() > 0) {
+            for (Object itemObject : supportingsDoc) {
+                LinkedHashMap item = (LinkedHashMap) itemObject;
+                Content content = new Content();
+                if(item.get("name") != null) {
+                    content.setName(item.get("name").toString());
+                }
+                if(item.get("url") != null) {
+                    content.setUrl(item.get("url").toString());
+                }
+                if(item.get("originalName") != null) {
+                    content.setOrgName(item.get("originalName").toString());
+                }
+                if(item.get("type") != null) {
+                    content.setBucketName(item.get("type").toString());
+                }
+                if(item.get("key") != null) {
+                    content.setObjectKey(item.get("key").toString());
+                }
+                manufCostStmt.addContent(content);
+            }
+        }
+        return manufCostStmt;
     }
 }

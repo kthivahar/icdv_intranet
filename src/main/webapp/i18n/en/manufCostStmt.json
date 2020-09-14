@@ -1,0 +1,55 @@
+{
+  "icdvIntranetApp": {
+    "manufCostStmt": {
+      "home": {
+        "title": "Manuf Cost Stmts",
+        "createLabel": "Create a new Manuf Cost Stmt",
+        "createOrEditLabel": "Create or edit a Manuf Cost Stmt",
+        "notFound": "No Manuf Cost Stmts found"
+      },
+      "created": "A new Manuf Cost Stmt is created with identifier {{ param }}",
+      "updated": "A Manuf Cost Stmt is updated with identifier {{ param }}",
+      "deleted": "A Manuf Cost Stmt is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Manuf Cost Stmt {{ id }}?"
+      },
+      "detail": {
+        "title": "Manuf Cost Stmt"
+      },
+      "nameOfManufacturer": "Name Of Manufacturer",
+      "uniqueEntityNumber": "Unique Entity Number",
+      "ftaScheme": "Fta Scheme",
+      "isQRVC": "Is QRVC",
+      "isCTC": "Is CTC",
+      "isMP": "Is MP",
+      "descriptionOfGoods": "Description Of Goods",
+      "model": "Model",
+      "hsCodeOfGoods": "Hs Code Of Goods",
+      "statementDate": "Statement Date",
+      "incotermOfFta": "Incoterm Of Fta",
+      "fobValueOfGoods": "Fob Value Of Goods",
+      "noOfMCSUnits": "No Of MCS Units",
+      "directLabourCost": "Direct Labour Cost",
+      "directOverheadCost": "Direct Overhead Cost",
+      "profit": "Profit",
+      "otherCost": "Other Cost",
+      "isDeclared1": "Is Declared 1",
+      "declaringName1": "Declaring Name 1",
+      "declarePosition1": "Declare Position 1",
+      "declareOn1": "Declare On 1",
+      "isDeclared2": "Is Declared 2",
+      "declaringName2": "Declaring Name 2",
+      "declarePosition2": "Declare Position 2",
+      "declareOn2": "Declare On 2",
+      "isDeclared3": "Is Declared 3",
+      "declaringName3": "Declaring Name 3",
+      "declarePosition3": "Declare Position 3",
+      "declareOn3": "Declare On 3",
+      "totalNonOrigMat": "Total Non Orig Mat",
+      "totalOrigMat": "Total Orig Mat",
+      "qvcRvc": "Qvc Rvc",
+      "material": "Material",
+      "content": "Content"
+    }
+  }
+}

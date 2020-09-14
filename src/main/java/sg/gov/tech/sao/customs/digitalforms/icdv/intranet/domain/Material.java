@@ -1,5 +1,7 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -39,6 +41,11 @@ public class Material implements Serializable {
 
     @Column(name = "value_of_material_originating")
     private Double valueOfMaterialOriginating;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "materials", allowSetters = true)
+    @JsonBackReference
+    private ManufCostStmt manufCostStmt;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -126,6 +133,20 @@ public class Material implements Serializable {
     public void setValueOfMaterialOriginating(Double valueOfMaterialOriginating) {
         this.valueOfMaterialOriginating = valueOfMaterialOriginating;
     }
+
+    public ManufCostStmt getManufCostStmt() {
+        return manufCostStmt;
+    }
+
+    public Material manufCostStmt(ManufCostStmt manufCostStmt) {
+        this.manufCostStmt = manufCostStmt;
+        return this;
+    }
+
+    public void setManufCostStmt(ManufCostStmt manufCostStmt) {
+        this.manufCostStmt = manufCostStmt;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

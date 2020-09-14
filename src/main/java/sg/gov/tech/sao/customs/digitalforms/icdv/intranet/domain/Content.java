@@ -43,6 +43,11 @@ public class Content implements Serializable {
     @JsonBackReference
     private ImportCertAndDeliVerifn importCertAndDeliVerifn;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = "contents", allowSetters = true)
+    @JsonBackReference
+    private ManufCostStmt manufCostStmt;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -141,6 +146,19 @@ public class Content implements Serializable {
 
     public void setImportCertAndDeliVerifn(ImportCertAndDeliVerifn importCertAndDeliVerifn) {
         this.importCertAndDeliVerifn = importCertAndDeliVerifn;
+    }
+
+    public ManufCostStmt getManufCostStmt() {
+        return manufCostStmt;
+    }
+
+    public Content manufCostStmt(ManufCostStmt manufCostStmt) {
+        this.manufCostStmt = manufCostStmt;
+        return this;
+    }
+
+    public void setManufCostStmt(ManufCostStmt manufCostStmt) {
+        this.manufCostStmt = manufCostStmt;
     }
 
     @Override

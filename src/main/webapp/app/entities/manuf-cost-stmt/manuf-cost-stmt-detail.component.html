@@ -1,0 +1,154 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="manufCostStmt">
+            <h2><span jhiTranslate="icdvIntranetApp.manufCostStmt.detail.title">Manuf Cost Stmt</span> {{ manufCostStmt.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.nameOfManufacturer">Name Of Manufacturer</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.nameOfManufacturer }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.uniqueEntityNumber">Unique Entity Number</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.uniqueEntityNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.ftaScheme">Fta Scheme</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.ftaScheme }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.isQRVC">Is QRVC</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.isQRVC }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.isCTC">Is CTC</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.isCTC }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.isMP">Is MP</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.isMP }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.descriptionOfGoods">Description Of Goods</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.descriptionOfGoods }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.model">Model</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.model }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.hsCodeOfGoods">Hs Code Of Goods</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.hsCodeOfGoods }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.statementDate">Statement Date</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.statementDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.incotermOfFta">Incoterm Of Fta</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.incotermOfFta }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.fobValueOfGoods">Fob Value Of Goods</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.fobValueOfGoods }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.noOfMCSUnits">No Of MCS Units</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.noOfMCSUnits }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.directLabourCost">Direct Labour Cost</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.directLabourCost }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.directOverheadCost">Direct Overhead Cost</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.directOverheadCost }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.profit">Profit</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.profit }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.otherCost">Other Cost</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.otherCost }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.isDeclared1">Is Declared 1</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.isDeclared1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declaringName1">Declaring Name 1</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declaringName1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declarePosition1">Declare Position 1</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declarePosition1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declareOn1">Declare On 1</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declareOn1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.isDeclared2">Is Declared 2</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.isDeclared2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declaringName2">Declaring Name 2</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declaringName2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declarePosition2">Declare Position 2</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declarePosition2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declareOn2">Declare On 2</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declareOn2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.isDeclared3">Is Declared 3</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.isDeclared3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declaringName3">Declaring Name 3</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declaringName3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declarePosition3">Declare Position 3</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declarePosition3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.declareOn3">Declare On 3</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.declareOn3 }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.totalNonOrigMat">Total Non Orig Mat</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.totalNonOrigMat }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.totalOrigMat">Total Orig Mat</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.totalOrigMat }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.qvcRvc">Qvc Rvc</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.qvcRvc }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/manuf-cost-stmt', manufCostStmt.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

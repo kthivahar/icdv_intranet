@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    
+    <!--
+        Added the entity ManufCostStmt.
+    -->
+    <changeSet id="20200914080617-1" author="jhipster">
+        <createTable tableName="manuf_cost_stmt">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name_of_manufacturer" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="unique_entity_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fta_scheme" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_qrvc" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_ctc" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_mp" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="description_of_goods" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="model" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hs_code_of_goods" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="statement_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="incoterm_of_fta" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fob_value_of_goods" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="no_of_mcs_units" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="direct_labour_cost" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="direct_overhead_cost" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="profit" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="other_cost" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_declared_1" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="declaring_name_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declare_position_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declare_on_1" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_declared_2" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="declaring_name_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declare_position_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declare_on_2" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_declared_3" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="declaring_name_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declare_position_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declare_on_3" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="total_non_orig_mat" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="total_orig_mat" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="qvc_rvc" type="double">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="manuf_cost_stmt" columnName="statement_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="manuf_cost_stmt" columnName="declare_on_1" columnDataType="datetime"/>
+        <dropDefaultValue tableName="manuf_cost_stmt" columnName="declare_on_2" columnDataType="datetime"/>
+        <dropDefaultValue tableName="manuf_cost_stmt" columnName="declare_on_3" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20200914080617-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20200914080617-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/manuf_cost_stmt.csv"
+                  separator=";"
+                  tableName="manuf_cost_stmt">
+            <column name="id" type="numeric"/>
+            <column name="name_of_manufacturer" type="string"/>
+            <column name="unique_entity_number" type="string"/>
+            <column name="fta_scheme" type="string"/>
+            <column name="is_qrvc" type="boolean"/>
+            <column name="is_ctc" type="boolean"/>
+            <column name="is_mp" type="boolean"/>
+            <column name="description_of_goods" type="string"/>
+            <column name="model" type="string"/>
+            <column name="hs_code_of_goods" type="string"/>
+            <column name="statement_date" type="datetime"/>
+            <column name="incoterm_of_fta" type="string"/>
+            <column name="fob_value_of_goods" type="numeric"/>
+            <column name="no_of_mcs_units" type="numeric"/>
+            <column name="direct_labour_cost" type="numeric"/>
+            <column name="direct_overhead_cost" type="numeric"/>
+            <column name="profit" type="numeric"/>
+            <column name="other_cost" type="numeric"/>
+            <column name="is_declared_1" type="boolean"/>
+            <column name="declaring_name_1" type="string"/>
+            <column name="declare_position_1" type="string"/>
+            <column name="declare_on_1" type="datetime"/>
+            <column name="is_declared_2" type="boolean"/>
+            <column name="declaring_name_2" type="string"/>
+            <column name="declare_position_2" type="string"/>
+            <column name="declare_on_2" type="datetime"/>
+            <column name="is_declared_3" type="boolean"/>
+            <column name="declaring_name_3" type="string"/>
+            <column name="declare_position_3" type="string"/>
+            <column name="declare_on_3" type="datetime"/>
+            <column name="total_non_orig_mat" type="numeric"/>
+            <column name="total_orig_mat" type="numeric"/>
+            <column name="qvc_rvc" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

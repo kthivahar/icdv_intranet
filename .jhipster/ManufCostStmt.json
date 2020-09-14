@@ -1,0 +1,157 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [
+    {
+      "relationshipName": "material",
+      "otherEntityName": "material",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "manufCostStmt"
+    },
+    {
+      "relationshipName": "content",
+      "otherEntityName": "content",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "manufCostStmt"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "nameOfManufacturer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "uniqueEntityNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ftaScheme",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isQRVC",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isCTC",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isMP",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "descriptionOfGoods",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "model",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hsCodeOfGoods",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statementDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "incotermOfFta",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fobValueOfGoods",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "noOfMCSUnits",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "directLabourCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "directOverheadCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "profit",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "otherCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "isDeclared1",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "declaringName1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "declarePosition1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "declareOn1",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "isDeclared2",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "declaringName2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "declarePosition2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "declareOn2",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "isDeclared3",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "declaringName3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "declarePosition3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "declareOn3",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "totalNonOrigMat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalOrigMat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "qvcRvc",
+      "fieldType": "Double"
+    }
+  ],
+  "changelogDate": "20200914080617",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "manuf_cost_stmt",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no"
+}
