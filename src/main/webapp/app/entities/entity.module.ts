@@ -17,6 +17,10 @@ import { RouterModule } from '@angular/router';
         path: 'content',
         loadChildren: () => import('./content/content.module').then(m => m.IcdvIntranetContentModule),
       },
+      {
+        path: 'material',
+        loadChildren: () => import('./material/material.module').then(m => m.IcdvIntranetMaterialModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

@@ -11,6 +11,7 @@
         "importInformation": "Import Information",
         "content": "Content",
         "importCertAndDeliVerifn": "Import Certificate And Delivery Verification",
+        "material": "Material",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

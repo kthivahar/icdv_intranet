@@ -1,0 +1,40 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hscode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryOfOrigin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameOfManufacturer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valueOfMaterialsNonOriginating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "valueOfMaterialOriginating",
+      "fieldType": "Double"
+    }
+  ],
+  "changelogDate": "20200914074327",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "material",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no"
+}
