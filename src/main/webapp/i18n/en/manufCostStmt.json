@@ -48,6 +48,8 @@
       "totalNonOrigMat": "Total Non Orig Mat",
       "totalOrigMat": "Total Orig Mat",
       "qvcRvc": "Qvc Rvc",
+      "status": "Status",
+      "createdOn": "Created On",
       "material": "Material",
       "content": "Content"
     }

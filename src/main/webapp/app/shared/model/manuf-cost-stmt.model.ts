@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IMaterial } from 'app/shared/model/material.model';
 import { IContent } from 'app/shared/model/content.model';
+import { Status } from 'app/shared/model/enumerations/status.model';
 
 export interface IManufCostStmt {
   id?: number;
@@ -36,6 +37,8 @@ export interface IManufCostStmt {
   totalNonOrigMat?: number;
   totalOrigMat?: number;
   qvcRvc?: number;
+  status?: Status;
+  createdOn?: Moment;
   materials?: IMaterial[];
   contents?: IContent[];
 }
@@ -75,6 +78,8 @@ export class ManufCostStmt implements IManufCostStmt {
     public totalNonOrigMat?: number,
     public totalOrigMat?: number,
     public qvcRvc?: number,
+    public status?: Status,
+    public createdOn?: Moment,
     public materials?: IMaterial[],
     public contents?: IContent[]
   ) {

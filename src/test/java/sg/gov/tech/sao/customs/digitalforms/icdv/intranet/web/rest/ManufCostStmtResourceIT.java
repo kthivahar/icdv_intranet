@@ -26,6 +26,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 /**
  * Integration tests for the {@link ManufCostStmtResource} REST controller.
  */
@@ -130,6 +131,12 @@ public class ManufCostStmtResourceIT {
     private static final Double DEFAULT_QVC_RVC = 1D;
     private static final Double UPDATED_QVC_RVC = 2D;
 
+    private static final Status DEFAULT_STATUS = Status.OPEN;
+    private static final Status UPDATED_STATUS = Status.REJECTED;
+
+    private static final ZonedDateTime DEFAULT_CREATED_ON = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_CREATED_ON = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
     @Autowired
     private ManufCostStmtRepository manufCostStmtRepository;
 
@@ -180,7 +187,9 @@ public class ManufCostStmtResourceIT {
             .declareOn3(DEFAULT_DECLARE_ON_3)
             .totalNonOrigMat(DEFAULT_TOTAL_NON_ORIG_MAT)
             .totalOrigMat(DEFAULT_TOTAL_ORIG_MAT)
-            .qvcRvc(DEFAULT_QVC_RVC);
+            .qvcRvc(DEFAULT_QVC_RVC)
+            .status(DEFAULT_STATUS)
+            .createdOn(DEFAULT_CREATED_ON);
         return manufCostStmt;
     }
     /**
@@ -222,7 +231,9 @@ public class ManufCostStmtResourceIT {
             .declareOn3(UPDATED_DECLARE_ON_3)
             .totalNonOrigMat(UPDATED_TOTAL_NON_ORIG_MAT)
             .totalOrigMat(UPDATED_TOTAL_ORIG_MAT)
-            .qvcRvc(UPDATED_QVC_RVC);
+            .qvcRvc(UPDATED_QVC_RVC)
+            .status(UPDATED_STATUS)
+            .createdOn(UPDATED_CREATED_ON);
         return manufCostStmt;
     }
 
@@ -277,6 +288,8 @@ public class ManufCostStmtResourceIT {
         assertThat(testManufCostStmt.getTotalNonOrigMat()).isEqualTo(DEFAULT_TOTAL_NON_ORIG_MAT);
         assertThat(testManufCostStmt.getTotalOrigMat()).isEqualTo(DEFAULT_TOTAL_ORIG_MAT);
         assertThat(testManufCostStmt.getQvcRvc()).isEqualTo(DEFAULT_QVC_RVC);
+        assertThat(testManufCostStmt.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testManufCostStmt.getCreatedOn()).isEqualTo(DEFAULT_CREATED_ON);
     }
 
     @Test
@@ -341,7 +354,9 @@ public class ManufCostStmtResourceIT {
             .andExpect(jsonPath("$.[*].declareOn3").value(hasItem(sameInstant(DEFAULT_DECLARE_ON_3))))
             .andExpect(jsonPath("$.[*].totalNonOrigMat").value(hasItem(DEFAULT_TOTAL_NON_ORIG_MAT.doubleValue())))
             .andExpect(jsonPath("$.[*].totalOrigMat").value(hasItem(DEFAULT_TOTAL_ORIG_MAT.doubleValue())))
-            .andExpect(jsonPath("$.[*].qvcRvc").value(hasItem(DEFAULT_QVC_RVC.doubleValue())));
+            .andExpect(jsonPath("$.[*].qvcRvc").value(hasItem(DEFAULT_QVC_RVC.doubleValue())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
+            .andExpect(jsonPath("$.[*].createdOn").value(hasItem(sameInstant(DEFAULT_CREATED_ON))));
     }
     
     @Test
@@ -386,7 +401,9 @@ public class ManufCostStmtResourceIT {
             .andExpect(jsonPath("$.declareOn3").value(sameInstant(DEFAULT_DECLARE_ON_3)))
             .andExpect(jsonPath("$.totalNonOrigMat").value(DEFAULT_TOTAL_NON_ORIG_MAT.doubleValue()))
             .andExpect(jsonPath("$.totalOrigMat").value(DEFAULT_TOTAL_ORIG_MAT.doubleValue()))
-            .andExpect(jsonPath("$.qvcRvc").value(DEFAULT_QVC_RVC.doubleValue()));
+            .andExpect(jsonPath("$.qvcRvc").value(DEFAULT_QVC_RVC.doubleValue()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
+            .andExpect(jsonPath("$.createdOn").value(sameInstant(DEFAULT_CREATED_ON)));
     }
     @Test
     @Transactional
@@ -440,7 +457,9 @@ public class ManufCostStmtResourceIT {
             .declareOn3(UPDATED_DECLARE_ON_3)
             .totalNonOrigMat(UPDATED_TOTAL_NON_ORIG_MAT)
             .totalOrigMat(UPDATED_TOTAL_ORIG_MAT)
-            .qvcRvc(UPDATED_QVC_RVC);
+            .qvcRvc(UPDATED_QVC_RVC)
+            .status(UPDATED_STATUS)
+            .createdOn(UPDATED_CREATED_ON);
 
         restManufCostStmtMockMvc.perform(put("/api/manuf-cost-stmts")
             .contentType(MediaType.APPLICATION_JSON)
@@ -483,6 +502,8 @@ public class ManufCostStmtResourceIT {
         assertThat(testManufCostStmt.getTotalNonOrigMat()).isEqualTo(UPDATED_TOTAL_NON_ORIG_MAT);
         assertThat(testManufCostStmt.getTotalOrigMat()).isEqualTo(UPDATED_TOTAL_ORIG_MAT);
         assertThat(testManufCostStmt.getQvcRvc()).isEqualTo(UPDATED_QVC_RVC);
+        assertThat(testManufCostStmt.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testManufCostStmt.getCreatedOn()).isEqualTo(UPDATED_CREATED_ON);
     }
 
     @Test

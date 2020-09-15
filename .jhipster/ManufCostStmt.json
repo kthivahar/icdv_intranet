@@ -143,6 +143,15 @@
     {
       "fieldName": "qvcRvc",
       "fieldType": "Double"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "OPEN,REJECTED,APPROVED,CANCELLED"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "ZonedDateTime"
     }
   ],
   "changelogDate": "20200914080617",

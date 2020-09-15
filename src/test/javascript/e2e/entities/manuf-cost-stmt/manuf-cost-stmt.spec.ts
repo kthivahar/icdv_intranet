@@ -70,6 +70,8 @@ describe('ManufCostStmt e2e test', () => {
       manufCostStmtUpdatePage.setTotalNonOrigMatInput('5'),
       manufCostStmtUpdatePage.setTotalOrigMatInput('5'),
       manufCostStmtUpdatePage.setQvcRvcInput('5'),
+      manufCostStmtUpdatePage.statusSelectLastOption(),
+      manufCostStmtUpdatePage.setCreatedOnInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
     ]);
 
     expect(await manufCostStmtUpdatePage.getNameOfManufacturerInput()).to.eq(
@@ -191,6 +193,10 @@ describe('ManufCostStmt e2e test', () => {
     expect(await manufCostStmtUpdatePage.getTotalNonOrigMatInput()).to.eq('5', 'Expected totalNonOrigMat value to be equals to 5');
     expect(await manufCostStmtUpdatePage.getTotalOrigMatInput()).to.eq('5', 'Expected totalOrigMat value to be equals to 5');
     expect(await manufCostStmtUpdatePage.getQvcRvcInput()).to.eq('5', 'Expected qvcRvc value to be equals to 5');
+    expect(await manufCostStmtUpdatePage.getCreatedOnInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected createdOn value to be equals to 2000-12-31'
+    );
 
     await manufCostStmtUpdatePage.save();
     expect(await manufCostStmtUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

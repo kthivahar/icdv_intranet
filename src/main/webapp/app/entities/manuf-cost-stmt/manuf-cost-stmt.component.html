@@ -55,6 +55,8 @@
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.manufCostStmt.totalNonOrigMat">Total Non Orig Mat</span></th>
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.manufCostStmt.totalOrigMat">Total Orig Mat</span></th>
                     <th scope="col" ><span jhiTranslate="icdvIntranetApp.manufCostStmt.qvcRvc">Qvc Rvc</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.manufCostStmt.status">Status</span></th>
+                    <th scope="col" ><span jhiTranslate="icdvIntranetApp.manufCostStmt.createdOn">Created On</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -93,6 +95,8 @@
                     <td>{{ manufCostStmt.totalNonOrigMat }}</td>
                     <td>{{ manufCostStmt.totalOrigMat }}</td>
                     <td>{{ manufCostStmt.qvcRvc }}</td>
+                    <td jhiTranslate="{{ 'icdvIntranetApp.Status.' + manufCostStmt.status }}">{{ manufCostStmt.status }}</td>
+                    <td>{{ manufCostStmt.createdOn | date:'medium' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

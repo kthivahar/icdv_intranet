@@ -136,6 +136,14 @@
                 <dd>
                     <span>{{ manufCostStmt.qvcRvc }}</span>
                 </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'icdvIntranetApp.Status.' + manufCostStmt.status }}">{{ manufCostStmt.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{ manufCostStmt.createdOn }}</span>
+                </dd>
             </dl>
 
             <button type="submit"

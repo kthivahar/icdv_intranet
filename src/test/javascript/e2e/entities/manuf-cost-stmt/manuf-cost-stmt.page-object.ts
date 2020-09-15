@@ -61,6 +61,8 @@ export class ManufCostStmtUpdatePage {
   totalNonOrigMatInput = element(by.id('field_totalNonOrigMat'));
   totalOrigMatInput = element(by.id('field_totalOrigMat'));
   qvcRvcInput = element(by.id('field_qvcRvc'));
+  statusSelect = element(by.id('field_status'));
+  createdOnInput = element(by.id('field_createdOn'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -296,6 +298,26 @@ export class ManufCostStmtUpdatePage {
 
   async getQvcRvcInput(): Promise<string> {
     return await this.qvcRvcInput.getAttribute('value');
+  }
+
+  async setStatusSelect(status: string): Promise<void> {
+    await this.statusSelect.sendKeys(status);
+  }
+
+  async getStatusSelect(): Promise<string> {
+    return await this.statusSelect.element(by.css('option:checked')).getText();
+  }
+
+  async statusSelectLastOption(): Promise<void> {
+    await this.statusSelect.all(by.tagName('option')).last().click();
+  }
+
+  async setCreatedOnInput(createdOn: string): Promise<void> {
+    await this.createdOnInput.sendKeys(createdOn);
+  }
+
+  async getCreatedOnInput(): Promise<string> {
+    return await this.createdOnInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

@@ -206,6 +206,23 @@
                     <input type="number" class="form-control" name="qvcRvc" id="field_qvcRvc"
                            formControlName="qvcRvc"/>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="OPEN">{{ 'icdvIntranetApp.Status.OPEN' | translate }}</option>
+                        <option value="REJECTED">{{ 'icdvIntranetApp.Status.REJECTED' | translate }}</option>
+                        <option value="APPROVED">{{ 'icdvIntranetApp.Status.APPROVED' | translate }}</option>
+                        <option value="CANCELLED">{{ 'icdvIntranetApp.Status.CANCELLED' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="icdvIntranetApp.manufCostStmt.createdOn" for="field_createdOn">Created On</label>
+                    <div class="d-flex">
+                        <input id="field_createdOn" type="datetime-local" class="form-control" name="createdOn" formControlName="createdOn" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
             </div>
 
             <div>

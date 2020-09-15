@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ManufCostStmtService } from 'app/entities/manuf-cost-stmt/manuf-cost-stmt.service';
 import { IManufCostStmt, ManufCostStmt } from 'app/shared/model/manuf-cost-stmt.model';
+import { Status } from 'app/shared/model/enumerations/status.model';
 
 describe('Service Tests', () => {
   describe('ManufCostStmt Service', () => {
@@ -57,7 +58,9 @@ describe('Service Tests', () => {
         currentDate,
         0,
         0,
-        0
+        0,
+        Status.OPEN,
+        currentDate
       );
     });
 
@@ -69,6 +72,7 @@ describe('Service Tests', () => {
             declareOn1: currentDate.format(DATE_TIME_FORMAT),
             declareOn2: currentDate.format(DATE_TIME_FORMAT),
             declareOn3: currentDate.format(DATE_TIME_FORMAT),
+            createdOn: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -88,6 +92,7 @@ describe('Service Tests', () => {
             declareOn1: currentDate.format(DATE_TIME_FORMAT),
             declareOn2: currentDate.format(DATE_TIME_FORMAT),
             declareOn3: currentDate.format(DATE_TIME_FORMAT),
+            createdOn: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -98,6 +103,7 @@ describe('Service Tests', () => {
             declareOn1: currentDate,
             declareOn2: currentDate,
             declareOn3: currentDate,
+            createdOn: currentDate,
           },
           returnedFromService
         );
@@ -144,6 +150,8 @@ describe('Service Tests', () => {
             totalNonOrigMat: 1,
             totalOrigMat: 1,
             qvcRvc: 1,
+            status: 'BBBBBB',
+            createdOn: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -154,6 +162,7 @@ describe('Service Tests', () => {
             declareOn1: currentDate,
             declareOn2: currentDate,
             declareOn3: currentDate,
+            createdOn: currentDate,
           },
           returnedFromService
         );
@@ -200,6 +209,8 @@ describe('Service Tests', () => {
             totalNonOrigMat: 1,
             totalOrigMat: 1,
             qvcRvc: 1,
+            status: 'BBBBBB',
+            createdOn: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -210,6 +221,7 @@ describe('Service Tests', () => {
             declareOn1: currentDate,
             declareOn2: currentDate,
             declareOn3: currentDate,
+            createdOn: currentDate,
           },
           returnedFromService
         );

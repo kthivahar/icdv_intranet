@@ -55,6 +55,7 @@ export class ManufCostStmtService {
       declareOn1: manufCostStmt.declareOn1 && manufCostStmt.declareOn1.isValid() ? manufCostStmt.declareOn1.toJSON() : undefined,
       declareOn2: manufCostStmt.declareOn2 && manufCostStmt.declareOn2.isValid() ? manufCostStmt.declareOn2.toJSON() : undefined,
       declareOn3: manufCostStmt.declareOn3 && manufCostStmt.declareOn3.isValid() ? manufCostStmt.declareOn3.toJSON() : undefined,
+      createdOn: manufCostStmt.createdOn && manufCostStmt.createdOn.isValid() ? manufCostStmt.createdOn.toJSON() : undefined,
     });
     return copy;
   }
@@ -65,6 +66,7 @@ export class ManufCostStmtService {
       res.body.declareOn1 = res.body.declareOn1 ? moment(res.body.declareOn1) : undefined;
       res.body.declareOn2 = res.body.declareOn2 ? moment(res.body.declareOn2) : undefined;
       res.body.declareOn3 = res.body.declareOn3 ? moment(res.body.declareOn3) : undefined;
+      res.body.createdOn = res.body.createdOn ? moment(res.body.createdOn) : undefined;
     }
     return res;
   }
@@ -76,6 +78,7 @@ export class ManufCostStmtService {
         manufCostStmt.declareOn1 = manufCostStmt.declareOn1 ? moment(manufCostStmt.declareOn1) : undefined;
         manufCostStmt.declareOn2 = manufCostStmt.declareOn2 ? moment(manufCostStmt.declareOn2) : undefined;
         manufCostStmt.declareOn3 = manufCostStmt.declareOn3 ? moment(manufCostStmt.declareOn3) : undefined;
+        manufCostStmt.createdOn = manufCostStmt.createdOn ? moment(manufCostStmt.createdOn) : undefined;
       });
     }
     return res;

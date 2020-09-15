@@ -1,6 +1,5 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
-import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ManufCostStmt;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.ManufCostStmtRepository;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
@@ -61,29 +60,6 @@ public class ManufCostStmtResource {
             .body(result);
     }
 
-    @PostMapping("/manufactring-cost-stmts")
-    public ResponseEntity<ManufCostStmt> createMnufacturingCostStmt(@RequestBody LinkedHashMap requestBody,
-                                                                                         HttpServletRequest request) throws URISyntaxException {
-        String remoteIP = request.getRemoteAddr();
-        String remoteHost = request.getRemoteHost();
-        log.debug("Remote Address " + remoteIP + " Remote host " + remoteHost);
-        log.debug("REST request to save manuf cost stmt : {}", requestBody);
-
-        ManufCostStmt manufCostStmt = FormIOApiDataBody.getManufactuingCostStmt(requestBody);
-
-        if(manufCostStmt == null) {
-            throw new BadRequestAlertException("A invalid request data", ENTITY_NAME, "idexists");
-        }
-
-        if (manufCostStmt.getId() != null) {
-            throw new BadRequestAlertException("A new Manufacturing cos stmt cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        ManufCostStmt result = manufCostStmtRepository.save(manufCostStmt);
-        return ResponseEntity.created(new URI("/api//manufactring-cost-stmts/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
-    }
-
     /**
      * {@code PUT  /manuf-cost-stmts} : Updates an existing manufCostStmt.
      *
@@ -102,6 +78,29 @@ public class ManufCostStmtResource {
         ManufCostStmt result = manufCostStmtRepository.save(manufCostStmt);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, manufCostStmt.getId().toString()))
+            .body(result);
+    }
+
+    @PostMapping("/manufacturing-cost-stmts")
+    public ResponseEntity<ManufCostStmt> createManufuringCostStmt(@RequestBody LinkedHashMap requestBody,
+                                                                  HttpServletRequest request) throws URISyntaxException {
+        String remoteIP = request.getRemoteAddr();
+        String remoteHost = request.getRemoteHost();
+        log.debug("Remote Address " + remoteIP + " Remote host " + remoteHost);
+        log.debug("REST request to save Manuf cost stmt : {}", requestBody);
+
+        ManufCostStmt manufCostStmt = FormIOApiDataBody.getManufactuingCostStmt(requestBody);
+
+        if(manufCostStmt == null) {
+            throw new BadRequestAlertException("A invalid request data", ENTITY_NAME, "idexists");
+        }
+
+        if (manufCostStmt.getId() != null) {
+            throw new BadRequestAlertException("A new manufacturing cost stmt cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        ManufCostStmt result = manufCostStmtRepository.save(manufCostStmt);
+        return ResponseEntity.created(new URI("/api/manufacturing-cost-stmts/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 

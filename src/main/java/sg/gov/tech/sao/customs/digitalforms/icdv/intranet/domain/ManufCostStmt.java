@@ -1,6 +1,5 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -10,6 +9,8 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
 /**
  * A ManufCostStmt.
@@ -122,12 +123,19 @@ public class ManufCostStmt implements Serializable {
     @Column(name = "qvc_rvc")
     private Double qvcRvc;
 
-    @OneToMany(mappedBy = "manufCostStmt", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
+
+    @Column(name = "created_on")
+    private ZonedDateTime createdOn;
+
+    @OneToMany(mappedBy = "manufCostStmt")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Material> materials = new HashSet<>();
 
-    @OneToMany(mappedBy = "manufCostStmt", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "manufCostStmt")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Content> contents = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -555,6 +563,32 @@ public class ManufCostStmt implements Serializable {
         this.qvcRvc = qvcRvc;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public ManufCostStmt status(Status status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public ZonedDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public ManufCostStmt createdOn(ZonedDateTime createdOn) {
+        this.createdOn = createdOn;
+        return this;
+    }
+
+    public void setCreatedOn(ZonedDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
     public Set<Material> getMaterials() {
         return materials;
     }
@@ -659,6 +693,8 @@ public class ManufCostStmt implements Serializable {
             ", totalNonOrigMat=" + getTotalNonOrigMat() +
             ", totalOrigMat=" + getTotalOrigMat() +
             ", qvcRvc=" + getQvcRvc() +
+            ", status='" + getStatus() + "'" +
+            ", createdOn='" + getCreatedOn() + "'" +
             "}";
     }
 }

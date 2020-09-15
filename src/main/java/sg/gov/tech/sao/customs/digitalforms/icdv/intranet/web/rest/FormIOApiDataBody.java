@@ -163,7 +163,7 @@ public class FormIOApiDataBody {
             manufCostStmt.setIsCTC(Boolean.valueOf(data.get("isCTC").toString()));
         }
         if(data.get("isMP") != null) {
-            manufCostStmt.setIsCTC(Boolean.valueOf(data.get("isMP").toString()));
+            manufCostStmt.setIsMP(Boolean.valueOf(data.get("isMP").toString()));
         }
         if(data.get("descriptionOfGoods") != null) {
             manufCostStmt.setDescriptionOfGoods(data.get("descriptionOfGoods").toString());
@@ -174,6 +174,9 @@ public class FormIOApiDataBody {
         if(data.get("hsCodeOfGoods") != null) {
             manufCostStmt.setHsCodeOfGoods(data.get("hsCodeOfGoods").toString());
         }
+        if(data.get("statementDate") != null) {
+            manufCostStmt.setStatementDate(ZonedDateTime.parse(data.get("statementDate").toString()));
+        }
         if(data.get("incotermOfFta") != null) {
             manufCostStmt.setIncotermOfFta(data.get("incotermOfFta").toString());
         }
@@ -181,7 +184,68 @@ public class FormIOApiDataBody {
             manufCostStmt.setFobValueOfGoods(getDoubleValue(data.get("fobValueOfGoods")));
         }
         if(data.get("noOfMCSUnits") != null) {
-            manufCostStmt.setFobValueOfGoods(getDoubleValue(data.get("noOfMCSUnits")));
+            manufCostStmt.setNoOfMCSUnits(getLongValue(data.get("noOfMCSUnits")));
+        }
+
+        if(data.get("directLabourCost") != null) {
+            manufCostStmt.setDirectLabourCost(getDoubleValue(data.get("directLabourCost")));
+        }
+        if(data.get("directOverheadCost") != null) {
+            manufCostStmt.setDirectOverheadCost(getDoubleValue(data.get("directOverheadCost")));
+        }
+        if(data.get("profit") != null) {
+            manufCostStmt.setProfit(getDoubleValue(data.get("profit")));
+        }
+        if(data.get("otherCost") != null) {
+            manufCostStmt.setOtherCost(getDoubleValue(data.get("otherCost")));
+        }
+        if(data.get("isDeclared1") != null) {
+            manufCostStmt.setIsDeclared1(Boolean.valueOf(data.get("isDeclared1").toString()));
+        }
+        if(data.get("declaringName1") != null) {
+            manufCostStmt.setDeclaringName1(data.get("declaringName1").toString());
+        }
+        if(data.get("declarePosition1") != null) {
+            manufCostStmt.setDeclarePosition1(data.get("declarePosition1").toString());
+        }
+        if(data.get("declareOn1") != null) {
+            manufCostStmt.setDeclareOn1(ZonedDateTime.parse(data.get("declareOn1").toString()));
+        }
+
+        if(data.get("isDeclared2") != null) {
+            manufCostStmt.setIsDeclared2(Boolean.valueOf(data.get("isDeclared2").toString()));
+        }
+        if(data.get("declaringName2") != null) {
+            manufCostStmt.setDeclaringName2(data.get("declaringName2").toString());
+        }
+        if(data.get("declarePosition2") != null) {
+            manufCostStmt.setDeclarePosition2(data.get("declarePosition2").toString());
+        }
+        if(data.get("declareOn2") != null) {
+            manufCostStmt.setDeclareOn2(ZonedDateTime.parse(data.get("declareOn2").toString()));
+        }
+
+        if(data.get("isDeclared3") != null) {
+            manufCostStmt.setIsDeclared3(Boolean.valueOf(data.get("isDeclared3").toString()));
+        }
+        if(data.get("declaringName3") != null) {
+            manufCostStmt.setDeclaringName3(data.get("declaringName3").toString());
+        }
+        if(data.get("declarePosition3") != null) {
+            manufCostStmt.setDeclarePosition3(data.get("declarePosition3").toString());
+        }
+        if(data.get("declareOn3") != null) {
+            manufCostStmt.setDeclareOn3(ZonedDateTime.parse(data.get("declareOn3").toString()));
+        }
+
+        if(data.get("totalValueOfNonOriginatingMaterials") != null) {
+            manufCostStmt.setTotalNonOrigMat(getDoubleValue(data.get("totalValueOfNonOriginatingMaterials")));
+        }
+        if(data.get("totalValueOfOriginatingMaterials") != null) {
+            manufCostStmt.setTotalOrigMat(getDoubleValue(data.get("totalValueOfOriginatingMaterials")));
+        }
+        if(data.get("qvcRvc") != null) {
+            manufCostStmt.setQvcRvc(getDoubleValue(data.get("qvcRvc")));
         }
 
         List dataGrid = (List) data.get("materials");
@@ -208,7 +272,7 @@ public class FormIOApiDataBody {
                 }
                 Double valueOrg = getDoubleValue(item.get("valueOfMaterialOriginating"));
                 if(valueOrg != null) {
-                    material.setValueOfMaterialsNonOriginating(valueOrg);
+                    material.setValueOfMaterialOriginating(valueOrg);
                 }
                 manufCostStmt.addMaterial(material);
             }
@@ -238,6 +302,8 @@ public class FormIOApiDataBody {
                 manufCostStmt.addContent(content);
             }
         }
+        manufCostStmt.setCreatedOn(ZonedDateTime.now());
+        manufCostStmt.setStatus(Status.OPEN);
         return manufCostStmt;
     }
 }

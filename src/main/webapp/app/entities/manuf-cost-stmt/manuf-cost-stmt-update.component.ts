@@ -51,6 +51,8 @@ export class ManufCostStmtUpdateComponent implements OnInit {
     totalNonOrigMat: [],
     totalOrigMat: [],
     qvcRvc: [],
+    status: [],
+    createdOn: [],
   });
 
   constructor(protected manufCostStmtService: ManufCostStmtService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -63,6 +65,7 @@ export class ManufCostStmtUpdateComponent implements OnInit {
         manufCostStmt.declareOn1 = today;
         manufCostStmt.declareOn2 = today;
         manufCostStmt.declareOn3 = today;
+        manufCostStmt.createdOn = today;
       }
 
       this.updateForm(manufCostStmt);
@@ -104,6 +107,8 @@ export class ManufCostStmtUpdateComponent implements OnInit {
       totalNonOrigMat: manufCostStmt.totalNonOrigMat,
       totalOrigMat: manufCostStmt.totalOrigMat,
       qvcRvc: manufCostStmt.qvcRvc,
+      status: manufCostStmt.status,
+      createdOn: manufCostStmt.createdOn ? manufCostStmt.createdOn.format(DATE_TIME_FORMAT) : null,
     });
   }
 
@@ -159,6 +164,8 @@ export class ManufCostStmtUpdateComponent implements OnInit {
       totalNonOrigMat: this.editForm.get(['totalNonOrigMat'])!.value,
       totalOrigMat: this.editForm.get(['totalOrigMat'])!.value,
       qvcRvc: this.editForm.get(['qvcRvc'])!.value,
+      status: this.editForm.get(['status'])!.value,
+      createdOn: this.editForm.get(['createdOn'])!.value ? moment(this.editForm.get(['createdOn'])!.value, DATE_TIME_FORMAT) : undefined,
     };
   }
 
