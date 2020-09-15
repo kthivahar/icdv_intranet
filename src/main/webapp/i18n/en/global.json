@@ -12,7 +12,7 @@
         "content": "Content",
         "importCertAndDeliVerifn": "Import Certificate And Delivery Verification",
         "material": "Material",
-        "manufCostStmt": "Manuf Cost Stmt",
+        "manufCostStmt": "Manufacturing Cost Statement",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

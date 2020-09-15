@@ -1,5 +1,6 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -130,12 +131,12 @@ public class ManufCostStmt implements Serializable {
     @Column(name = "created_on")
     private ZonedDateTime createdOn;
 
-    @OneToMany(mappedBy = "manufCostStmt")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "manufCostStmt", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Material> materials = new HashSet<>();
 
-    @OneToMany(mappedBy = "manufCostStmt")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "manufCostStmt", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Content> contents = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

@@ -1,6 +1,7 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ManufCostStmt;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.ManufCostStmtRepository;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
 
@@ -70,15 +71,17 @@ public class ManufCostStmtResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/manuf-cost-stmts")
-    public ResponseEntity<ManufCostStmt> updateManufCostStmt(@RequestBody ManufCostStmt manufCostStmt) throws URISyntaxException {
-        log.debug("REST request to update ManufCostStmt : {}", manufCostStmt);
-        if (manufCostStmt.getId() == null) {
+    public ResponseEntity<ManufCostStmt> updateManufCostStmt(@RequestBody Object manufCostStmt1) throws URISyntaxException {
+        log.debug("REST request to update ManufCostStmt : {}", manufCostStmt1);
+        LinkedHashMap manufCostStmt = (LinkedHashMap) manufCostStmt1;
+        if (!manufCostStmt.containsKey("id")) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        ManufCostStmt result = manufCostStmtRepository.save(manufCostStmt);
+        manufCostStmtRepository.setStatusForMCS(Status.valueOf(manufCostStmt.get("status").toString()), Long.parseLong(manufCostStmt.get("id").toString()));
+        Optional<ManufCostStmt> result = manufCostStmtRepository.findById(Long.parseLong(manufCostStmt.get("id").toString()));
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, manufCostStmt.getId().toString()))
-            .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, manufCostStmt.get("id").toString()))
+            .body(result.get());
     }
 
     @PostMapping("/manufacturing-cost-stmts")
