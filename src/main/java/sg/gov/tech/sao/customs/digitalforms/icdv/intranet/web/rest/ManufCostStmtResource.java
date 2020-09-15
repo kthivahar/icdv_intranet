@@ -1,5 +1,6 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
+import org.springframework.data.domain.Sort;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ManufCostStmt;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.ManufCostStmtRepository;
@@ -115,7 +116,13 @@ public class ManufCostStmtResource {
     @GetMapping("/manuf-cost-stmts")
     public List<ManufCostStmt> getAllManufCostStmts() {
         log.debug("REST request to get all ManufCostStmts");
-        return manufCostStmtRepository.findAll();
+        return manufCostStmtRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    @GetMapping("/manuf-cost-stmts-ext")
+    public List<ManufCostStmt> getAllManufCostStmtsExt() {
+        log.debug("REST request to get all ManufCostStmts");
+        return manufCostStmtRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     /**
@@ -126,6 +133,19 @@ public class ManufCostStmtResource {
      */
     @GetMapping("/manuf-cost-stmts/{id}")
     public ResponseEntity<ManufCostStmt> getManufCostStmt(@PathVariable Long id) {
+        log.debug("REST request to get ManufCostStmt : {}", id);
+        Optional<ManufCostStmt> manufCostStmt = manufCostStmtRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(manufCostStmt);
+    }
+
+    /**
+     * {@code GET  /manuf-cost-stmts/:id} : get the "id" manufCostStmt.
+     *
+     * @param id the id of the manufCostStmt to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the manufCostStmt, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/manuf-cost-stmts-ext/{id}")
+    public ResponseEntity<ManufCostStmt> getManufCostStmtExt(@PathVariable Long id) {
         log.debug("REST request to get ManufCostStmt : {}", id);
         Optional<ManufCostStmt> manufCostStmt = manufCostStmtRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(manufCostStmt);
