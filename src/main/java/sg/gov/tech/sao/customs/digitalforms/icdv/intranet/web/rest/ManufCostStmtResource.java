@@ -1,6 +1,13 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
+import io.minio.GetPresignedObjectUrlArgs;
+import io.minio.MinioClient;
+import io.minio.http.Method;
+import org.checkerframework.checker.nullness.Opt;
+import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Sort;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Content;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ManufCostStmt;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.ManufCostStmtRepository;
@@ -30,6 +37,8 @@ import java.util.Optional;
 @Transactional
 public class ManufCostStmtResource {
 
+    private Environment env;
+
     private final Logger log = LoggerFactory.getLogger(ManufCostStmtResource.class);
 
     private static final String ENTITY_NAME = "manufCostStmt";
@@ -39,8 +48,9 @@ public class ManufCostStmtResource {
 
     private final ManufCostStmtRepository manufCostStmtRepository;
 
-    public ManufCostStmtResource(ManufCostStmtRepository manufCostStmtRepository) {
+    public ManufCostStmtResource(ManufCostStmtRepository manufCostStmtRepository, Environment env) {
         this.manufCostStmtRepository = manufCostStmtRepository;
+        this.env = env;
     }
 
     /**
@@ -64,8 +74,6 @@ public class ManufCostStmtResource {
 
     /**
      * {@code PUT  /manuf-cost-stmts} : Updates an existing manufCostStmt.
-     *
-     * @param manufCostStmt the manufCostStmt to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated manufCostStmt,
      * or with status {@code 400 (Bad Request)} if the manufCostStmt is not valid,
      * or with status {@code 500 (Internal Server Error)} if the manufCostStmt couldn't be updated.
@@ -134,8 +142,18 @@ public class ManufCostStmtResource {
     @GetMapping("/manuf-cost-stmts/{id}")
     public ResponseEntity<ManufCostStmt> getManufCostStmt(@PathVariable Long id) {
         log.debug("REST request to get ManufCostStmt : {}", id);
-        Optional<ManufCostStmt> manufCostStmt = manufCostStmtRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(manufCostStmt);
+        Optional<ManufCostStmt> optionalManufCostStmt = manufCostStmtRepository.findById(id);
+        if(optionalManufCostStmt.isPresent()) {
+            ManufCostStmt manufCostStmt = optionalManufCostStmt.get();
+            if(manufCostStmt.getContents() != null && manufCostStmt.getContents().size() > 0) {
+                for (Content content : manufCostStmt.getContents()) {
+                    String signedUrl = getSignedURL(content.getName(), content.getUrl());
+                    content.setUrl(signedUrl);
+                }
+            }
+            return ResponseUtil.wrapOrNotFound(Optional.of(manufCostStmt));
+        }
+        return null;
     }
 
     /**
@@ -162,5 +180,30 @@ public class ManufCostStmtResource {
         log.debug("REST request to delete ManufCostStmt : {}", id);
         manufCostStmtRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    private String getSignedURL(String objectName, String objectUrl) {
+
+        MinioClient minioClient =
+            MinioClient.builder()
+                .endpoint(env.getProperty("app.minio.serverurl"))
+                .credentials(env.getProperty("app.minio.accsskey"),
+                    env.getProperty("app.minio.secretkey"))
+                .build();
+        try {
+            String url =
+                minioClient.getPresignedObjectUrl(
+                    GetPresignedObjectUrlArgs.builder()
+                        .method(Method.GET)
+                        .bucket(env.getProperty("app.minio.bucketname"))
+                        .object(objectName)
+                        .expiry(60 * 60 * 1)
+                        .build());
+
+            return url;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return objectUrl;
     }
 }
