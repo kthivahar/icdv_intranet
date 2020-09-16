@@ -1,6 +1,7 @@
 package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service;
 
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,14 @@ import java.util.Optional;
  * Service Interface for managing {@link ImportCertAndDeliVerifn}.
  */
 public interface ImportCertAndDeliVerifnService {
+
+    /**
+     * Save a importCertAndDeliVerifn.
+     *
+     * @param importCertAndDeliVerifn the entity to save.
+     * @return the persisted entity.
+     */
+    ImportCertAndDeliVerifn updateStatus(Status status, Long id);
 
     /**
      * Save a importCertAndDeliVerifn.

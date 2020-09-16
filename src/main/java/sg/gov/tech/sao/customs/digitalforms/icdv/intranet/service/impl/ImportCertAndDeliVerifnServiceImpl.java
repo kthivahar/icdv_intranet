@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.Content;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.repository.ImportCertAndDeliVerifnRepository;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.ImportCertAndDeliVerifnService;
 
@@ -40,6 +41,17 @@ public class ImportCertAndDeliVerifnServiceImpl implements ImportCertAndDeliVeri
                                               Environment env) {
         this.importCertAndDeliVerifnRepository = importCertAndDeliVerifnRepository;
         this.env = env;
+    }
+
+    @Override
+    public ImportCertAndDeliVerifn updateStatus(Status status, Long id) {
+        importCertAndDeliVerifnRepository.setStatusForICDV(status, id);
+        Optional<ImportCertAndDeliVerifn> optionalImportCertAndDeliVerifn
+            = importCertAndDeliVerifnRepository.findById(id);
+        if(optionalImportCertAndDeliVerifn.isPresent()) {
+            return optionalImportCertAndDeliVerifn.get();
+        }
+        return null;
     }
 
     @Override

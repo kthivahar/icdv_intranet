@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
+import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.ImportCertAndDeliVerifnService;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
 
@@ -68,14 +69,18 @@ public class ImportCertAndDeliVerifnResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/import-cert-and-deli-verifns")
-    public ResponseEntity<ImportCertAndDeliVerifn> updateImportCertAndDeliVerifn(@Valid @RequestBody ImportCertAndDeliVerifn importCertAndDeliVerifn) throws URISyntaxException {
-        log.debug("REST request to update ImportCertAndDeliVerifn : {}", importCertAndDeliVerifn);
-        if (importCertAndDeliVerifn.getId() == null) {
+    public ResponseEntity<ImportCertAndDeliVerifn> updateImportCertAndDeliVerifn(@Valid @RequestBody Object importCertAndDeliVerifn1) throws URISyntaxException {
+        log.debug("REST request to update ImportCertAndDeliVerifn : {}", importCertAndDeliVerifn1);
+        LinkedHashMap importCertAndDeliVerifn = (LinkedHashMap) importCertAndDeliVerifn1;
+        if (!importCertAndDeliVerifn.containsKey("id")) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        ImportCertAndDeliVerifn result = importCertAndDeliVerifnService.save(importCertAndDeliVerifn);
+        Status status = Status.valueOf(importCertAndDeliVerifn.get("status").toString());
+        Long id = Long.valueOf(importCertAndDeliVerifn.get("id").toString());
+        ImportCertAndDeliVerifn result = importCertAndDeliVerifnService.updateStatus(status, id);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, importCertAndDeliVerifn.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME,
+                importCertAndDeliVerifn.get("id").toString()))
             .body(result);
     }
 
