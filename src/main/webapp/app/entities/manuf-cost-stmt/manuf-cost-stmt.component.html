@@ -92,8 +92,8 @@
 <!--                    <td>{{ manufCostStmt.declaringName3 }}</td>-->
 <!--                    <td>{{ manufCostStmt.declarePosition3 }}</td>-->
 <!--                    <td>{{ manufCostStmt.declareOn3 | date:'medium' }}</td>-->
-                    <td>{{ manufCostStmt.totalNonOrigMat }}</td>
-                    <td>{{ manufCostStmt.totalOrigMat }}</td>
+                    <td>{{ manufCostStmt.totalNonOrigMat | number : '1.2-2'}}</td>
+                    <td>{{ manufCostStmt.totalOrigMat | number : '1.2-2'}}</td>
                     <td>{{ manufCostStmt.qvcRvc | number : '1.2-2' }}</td>
                     <td jhiTranslate="{{ 'icdvIntranetApp.Status.' + manufCostStmt.status }}">{{ manufCostStmt.status }}</td>
                     <td>{{ manufCostStmt.createdOn | date:'medium' }}</td>

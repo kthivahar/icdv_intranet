@@ -96,7 +96,7 @@
                         </dd>
                         <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.fobValueOfGoods">Fob Value Of Goods</span></dt>
                         <dd>
-                            <span>{{ manufCostStmt.fobValueOfGoods }}</span>
+                            <span>{{ manufCostStmt.fobValueOfGoods | number : '1.2-2' }}</span>
                         </dd>
                         <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.noOfMCSUnits">No Of MCS Units</span></dt>
                         <dd>
@@ -127,8 +127,8 @@
                                 <td>{{ material.hscode }}</td>
                                 <td>{{ material.countryOfOrigin }}</td>
                                 <td>{{ material.nameOfManufacturer }}</td>
-                                <td>{{ material.valueOfMaterialsNonOriginating }}</td>
-                                <td>{{ material.valueOfMaterialOriginating }}</td>
+                                <td>{{ material.valueOfMaterialsNonOriginating | number : '1.2-2' }}</td>
+                                <td>{{ material.valueOfMaterialOriginating | number : '1.2-2'}}</td>
                                 <!--                        -->
                                 <!--                        <td class="text-right">-->
                                 <!--                            <div class="btn-group">-->
@@ -163,27 +163,27 @@
                 <tr>
                     <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.totalNonOrigMat">Total Non Orig Mat</span></dt>
                     <dd>
-                        <span>{{ manufCostStmt.totalNonOrigMat }}</span>
+                        <span>{{ manufCostStmt.totalNonOrigMat | number : '1.2-2' }}</span>
                     </dd>
                     <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.totalOrigMat">Total Orig Mat</span></dt>
                     <dd>
-                        <span>{{ manufCostStmt.totalOrigMat }}</span>
+                        <span>{{ manufCostStmt.totalOrigMat | number : '1.2-2'  }}</span>
                     </dd>
                     <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.directLabourCost">Direct Labour Cost</span></dt>
                     <dd>
-                        <span>{{ manufCostStmt.directLabourCost }}</span>
+                        <span>{{ manufCostStmt.directLabourCost | number : '1.2-2'  }}</span>
                     </dd>
                     <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.directOverheadCost">Direct Overhead Cost</span></dt>
                     <dd>
-                        <span>{{ manufCostStmt.directOverheadCost }}</span>
+                        <span>{{ manufCostStmt.directOverheadCost | number : '1.2-2'  }}</span>
                     </dd>
                     <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.profit">Profit</span></dt>
                     <dd>
-                        <span>{{ manufCostStmt.profit }}</span>
+                        <span>{{ manufCostStmt.profit | number : '1.2-2'  }}</span>
                     </dd>
                     <dt><span jhiTranslate="icdvIntranetApp.manufCostStmt.otherCost">Other Cost</span></dt>
                     <dd>
-                        <span>{{ manufCostStmt.otherCost }}</span>
+                        <span>{{ manufCostStmt.otherCost | number : '1.2-2'  }}</span>
                     </dd>
                 </tr>
                 <tr>
