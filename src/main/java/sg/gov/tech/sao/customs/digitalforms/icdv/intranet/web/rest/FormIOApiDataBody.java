@@ -12,6 +12,7 @@ public class FormIOApiDataBody {
 
     public static ImportCertAndDeliVerifn getImportCertAndDeliveryCerAndVerif(LinkedHashMap formIOApiDataBody) {
         LinkedHashMap request = (LinkedHashMap) formIOApiDataBody.get("request");
+        LinkedHashMap submission = (LinkedHashMap) formIOApiDataBody.get("submission");
         if(request == null || (request != null && request.get("data") == null)) {
             return null;
         }
@@ -105,8 +106,8 @@ public class FormIOApiDataBody {
             }
         }
 
-        int random = new Random(1000).nextInt();
-        importCertAndDeliVerifn.setExternalId("external" + random);
+        String externalId = submission.get("_id").toString();
+        importCertAndDeliVerifn.setExternalId(externalId);
         importCertAndDeliVerifn.setCreatedOn(ZonedDateTime.now());
         importCertAndDeliVerifn.setStatus(Status.OPEN);
         return importCertAndDeliVerifn;
