@@ -25,6 +25,8 @@ export class ImportCertAndDeliVerifnDetailComponent implements OnInit {
 
   submissionStatus: any | null = null;
 
+  nonEditable: boolean | true = true;
+
   constructor(protected activatedRoute: ActivatedRoute,
               protected importCertAndDeliVerifnService: ImportCertAndDeliVerifnService) {}
 

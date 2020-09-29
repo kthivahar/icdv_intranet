@@ -38,12 +38,12 @@
             <br>
             <br>
 
-            <formio [form]="submissionStatusForm" [submission]="submissionStatus" readOnly="true" viewOnly="true"></formio>
+            <formio [form]="submissionStatusForm" [submission]="submissionStatus" [readOnly]="nonEditable" [viewOnly]="nonEditable"></formio>
 
 <!--            <formio src="https://epjdlbhbdgcmqwz.form.io/quickform" viewOnly="true" readOnly="true"-->
 <!--                    [submission]="submissionStatus" ></formio>-->
 
-            <formio [form]="submissionForm" [submission]="submissionData" readOnly="true" viewOnly="true" ></formio>
+            <formio [form]="submissionForm" [submission]="submissionData" [readOnly]="nonEditable" [viewOnly]="nonEditable" ></formio>
 
         </div>
     </div>
