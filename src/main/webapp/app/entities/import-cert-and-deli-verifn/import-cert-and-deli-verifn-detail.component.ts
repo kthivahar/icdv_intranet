@@ -15,11 +15,45 @@ import {HttpResponse} from "@angular/common/http";
 export class ImportCertAndDeliVerifnDetailComponent implements OnInit {
   importCertAndDeliVerifn: IImportCertAndDeliVerifn | null = null;
 
+  linkSrc: any | null = null;
+
+  submissionStatusForm: any | null = null;
+
+  submissionForm: any | null = null;
+
+  submissionData: any | null = null;
+
+  submissionStatus: any | null = null;
+
   constructor(protected activatedRoute: ActivatedRoute,
               protected importCertAndDeliVerifnService: ImportCertAndDeliVerifnService) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ importCertAndDeliVerifn }) => (this.importCertAndDeliVerifn = importCertAndDeliVerifn));
+    this.activatedRoute.data.subscribe(({ importCertAndDeliVerifn }) => {
+      this.importCertAndDeliVerifn = importCertAndDeliVerifn;
+      this.linkSrc = "https://epjdlbhbdgcmqwz.form.io/importcertificateanddeliveryverification/submission/" + this.importCertAndDeliVerifn?.externalId;
+      this.submissionStatus = {
+        data: {
+          "status": this.importCertAndDeliVerifn?.status,
+          "createdDate": this.importCertAndDeliVerifn?.createdOn
+        }
+      };
+    });
+
+    this.importCertAndDeliVerifnService.getHeaderForm().subscribe(form => {
+      this.submissionStatusForm = form.body;
+    })
+
+    const externalId = this.importCertAndDeliVerifn?.externalId;
+    this.importCertAndDeliVerifnService.getForm().subscribe(form => {
+      this.submissionForm = form.body;
+    })
+
+    this.importCertAndDeliVerifnService.getSubmissionData(externalId).subscribe(form => {
+      this.submissionData = {
+        "data": form.body.data
+      };
+    })
   }
 
   previousState(): void {

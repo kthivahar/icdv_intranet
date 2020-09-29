@@ -7,6 +7,7 @@ import { IcdvIntranetCoreModule } from 'app/core/core.module';
 import { IcdvIntranetAppRoutingModule } from './app-routing.module';
 import { IcdvIntranetHomeModule } from './home/home.module';
 import { IcdvIntranetEntityModule } from './entities/entity.module';
+import { FormioModule } from 'angular-formio';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -24,6 +25,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     // jhipster-needle-angular-add-module JHipster will add new module here
     IcdvIntranetEntityModule,
     IcdvIntranetAppRoutingModule,
+    FormioModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
