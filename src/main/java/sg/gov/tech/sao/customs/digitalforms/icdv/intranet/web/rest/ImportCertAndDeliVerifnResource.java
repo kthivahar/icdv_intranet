@@ -5,12 +5,16 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDeliVerifn;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.ImportCertAndDeliVerifnService;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
+import springfox.documentation.service.Header;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,6 +37,15 @@ public class ImportCertAndDeliVerifnResource {
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
+
+    @Value("${app.formio.headerform}")
+    private String formioHeaderFormUrl;
+
+    @Value("${app.formio.sumissiondata}")
+    private String formioSubmissionData;
+
+    @Value("${app.formio.form}")
+    private String formioFormUrl;
 
     private final ImportCertAndDeliVerifnService importCertAndDeliVerifnService;
 
@@ -62,7 +75,6 @@ public class ImportCertAndDeliVerifnResource {
     /**
      * {@code PUT  /import-cert-and-deli-verifns} : Updates an existing importCertAndDeliVerifn.
      *
-     * @param importCertAndDeliVerifn the importCertAndDeliVerifn to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated importCertAndDeliVerifn,
      * or with status {@code 400 (Bad Request)} if the importCertAndDeliVerifn is not valid,
      * or with status {@code 500 (Internal Server Error)} if the importCertAndDeliVerifn couldn't be updated.
@@ -166,5 +178,29 @@ public class ImportCertAndDeliVerifnResource {
         log.debug("REST request to delete ImportCertAndDeliVerifn : {}", id);
         importCertAndDeliVerifnService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping(value = "/import-cert-and-deli-verifns/formio/headerform", produces =  MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> getHeaderForm() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Object> responseEntity = restTemplate.getForEntity(formioHeaderFormUrl, Object.class);
+        Object responseBody = responseEntity.getBody();
+        return ResponseUtil.wrapOrNotFound(Optional.of(responseBody));
+    }
+
+    @GetMapping(value = "/import-cert-and-deli-verifns/formio/submission-data/{submissionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> getSubmissiondata(@PathVariable String submissionId) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Object> responseEntity = restTemplate.getForEntity( formioSubmissionData + submissionId, Object.class);
+        Object responseBody = responseEntity.getBody();
+        return ResponseUtil.wrapOrNotFound(Optional.of(responseBody));
+    }
+
+    @GetMapping(value = "/import-cert-and-deli-verifns/formio/form", produces =  MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> getForm() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Object> responseEntity = restTemplate.getForEntity(formioFormUrl, Object.class);
+        Object responseBody = responseEntity.getBody();
+        return ResponseUtil.wrapOrNotFound(Optional.of(responseBody));
     }
 }

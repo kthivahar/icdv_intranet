@@ -13,21 +13,21 @@ type EntityArrayResponseType = HttpResponse<IImportCertAndDeliVerifn[]>;
 export class ImportCertAndDeliVerifnService {
   public resourceUrl = SERVER_API_URL + 'api/import-cert-and-deli-verifns';
 
-  public formIoUrl = "https://epjdlbhbdgcmqwz.form.io";
+  public formIoUrl = this.resourceUrl + '/formio';
 
   constructor(protected http: HttpClient) {}
 
   getHeaderForm(): Observable<any> {
-    return this.http.get<any>(`${this.formIoUrl}/quickform`, { observe: 'response' });
+    return this.http.get<any>(`${this.formIoUrl}/headerform`, { observe: 'response' });
   }
 
   getForm(): Observable<any> {
-    return this.http.get<any>(`${this.formIoUrl}/importcertificateanddeliveryverification`, { observe: 'response' });
+    return this.http.get<any>(`${this.formIoUrl}/form`, { observe: 'response' });
   }
 
 
   getSubmissionData(externalId: any): Observable<any> {
-    return this.http.get<any>(`${this.formIoUrl}/importcertificateanddeliveryverification/submission/${externalId}`, { observe: 'response' });
+    return this.http.get<any>(`${this.formIoUrl}/submission-data/${externalId}`, { observe: 'response' });
   }
 
   create(importCertAndDeliVerifn: IImportCertAndDeliVerifn): Observable<EntityResponseType> {

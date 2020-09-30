@@ -124,3 +124,8 @@ app:
     accsskey: Welcome1#
     secretkey: Welcome1#
     bucketname: formio
+  formio:
+    headerform: https://epjdlbhbdgcmqwz.form.io/quickForm
+    form: https://epjdlbhbdgcmqwz.form.io/importcertificateanddeliveryverification
+    sumissiondata: https://epjdlbhbdgcmqwz.form.io/importcertificateanddeliveryverification/submission/
+
