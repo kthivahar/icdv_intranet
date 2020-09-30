@@ -7,7 +7,6 @@ import {ImportCertAndDeliVerifnService} from "app/entities/import-cert-and-deli-
 import {Observable} from "rxjs";
 import {HttpResponse} from "@angular/common/http";
 
-
 @Component({
   selector: 'jhi-import-cert-and-deli-verifn-detail',
   templateUrl: './import-cert-and-deli-verifn-detail.component.html',
@@ -56,6 +55,7 @@ export class ImportCertAndDeliVerifnDetailComponent implements OnInit {
         "data": form.body.data
       };
     })
+
   }
 
   previousState(): void {

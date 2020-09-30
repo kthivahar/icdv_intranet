@@ -44,6 +44,11 @@
 <!--                    [submission]="submissionStatus" ></formio>-->
 
             <formio [form]="submissionForm" [submission]="submissionData" [readOnly]="nonEditable" [viewOnly]="nonEditable" ></formio>
+            <span style="font-weight: bold" *ngIf="importCertAndDeliVerifn.contents && importCertAndDeliVerifn.contents.length > 0">Attachments</span>
+                <br>
+                <span *ngFor="let item of importCertAndDeliVerifn.contents">
+                        <a href="{{item.url}}" target="_blank"> {{item.orgName}} </a>
+                </span>
 
         </div>
     </div>

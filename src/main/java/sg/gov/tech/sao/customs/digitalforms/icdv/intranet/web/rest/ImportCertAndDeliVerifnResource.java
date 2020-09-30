@@ -2,9 +2,13 @@ package sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import io.minio.GetPresignedObjectUrlArgs;
+import io.minio.MinioClient;
+import io.minio.http.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +18,12 @@ import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.ImportCertAndDe
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.domain.enumeration.Status;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.service.ImportCertAndDeliVerifnService;
 import sg.gov.tech.sao.customs.digitalforms.icdv.intranet.web.rest.errors.BadRequestAlertException;
-import springfox.documentation.service.Header;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +39,8 @@ public class ImportCertAndDeliVerifnResource {
 
     private static final String ENTITY_NAME = "importCertAndDeliVerifn";
 
+    private Environment env;
+
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
@@ -49,8 +55,10 @@ public class ImportCertAndDeliVerifnResource {
 
     private final ImportCertAndDeliVerifnService importCertAndDeliVerifnService;
 
-    public ImportCertAndDeliVerifnResource(ImportCertAndDeliVerifnService importCertAndDeliVerifnService) {
+    public ImportCertAndDeliVerifnResource(ImportCertAndDeliVerifnService importCertAndDeliVerifnService,
+                                           Environment env) {
         this.importCertAndDeliVerifnService = importCertAndDeliVerifnService;
+        this.env = env;
     }
 
     /**
@@ -193,7 +201,47 @@ public class ImportCertAndDeliVerifnResource {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity = restTemplate.getForEntity( formioSubmissionData + submissionId, Object.class);
         Object responseBody = responseEntity.getBody();
-        return ResponseUtil.wrapOrNotFound(Optional.of(responseBody));
+
+        Object updatedResponseBody = updateSupportDocUrl(responseBody);
+
+        return ResponseUtil.wrapOrNotFound(Optional.of(updatedResponseBody));
+    }
+
+    private Object updateSupportDocUrl(Object responseBody) {
+        LinkedHashMap body = (LinkedHashMap) responseBody;
+        LinkedHashMap dataBody = (LinkedHashMap) body.get("data");
+        ArrayList<LinkedHashMap> supportingDocs = (ArrayList<LinkedHashMap>) dataBody.get("supportingDocs");
+        for(LinkedHashMap item : supportingDocs) {
+            String signUrl = getSignedURL(item.get("key").toString(), item.get("url").toString());
+            item.put("url", signUrl);
+            item.put("acl", "public");
+        }
+        return body;
+    }
+
+    private String getSignedURL(String objectName, String objectUrl) {
+
+        MinioClient minioClient =
+            MinioClient.builder()
+                .endpoint(env.getProperty("app.minio.serverurl"))
+                .credentials(env.getProperty("app.minio.accsskey"),
+                    env.getProperty("app.minio.secretkey"))
+                .build();
+        try {
+            String url =
+                minioClient.getPresignedObjectUrl(
+                    GetPresignedObjectUrlArgs.builder()
+                        .method(Method.GET)
+                        .bucket(env.getProperty("app.minio.bucketname"))
+                        .object(objectName)
+                        .expiry(60 * 60 * 1)
+                        .build());
+
+            return url;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return objectUrl;
     }
 
     @GetMapping(value = "/import-cert-and-deli-verifns/formio/form", produces =  MediaType.APPLICATION_JSON_VALUE)
@@ -201,6 +249,15 @@ public class ImportCertAndDeliVerifnResource {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Object> responseEntity = restTemplate.getForEntity(formioFormUrl, Object.class);
         Object responseBody = responseEntity.getBody();
+
+        LinkedHashMap body = (LinkedHashMap) responseBody;
+        ArrayList<LinkedHashMap> components = (ArrayList<LinkedHashMap>) body.get("components");
+        for(LinkedHashMap component : components) {
+            if("supportingDocuments".equalsIgnoreCase(component.get("key").toString())) {
+                component.put("hidden", true);
+            }
+        }
+
         return ResponseUtil.wrapOrNotFound(Optional.of(responseBody));
     }
 }
